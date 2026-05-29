@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>사회복지실무역량 | 2026 월드컵 정보</title>
+  <title>사회복지실무역량 | 메인 대시보드</title>
   <style>
     :root {
       --black: #050505;
       --ink: #111111;
       --paper: #fffdf7;
       --cream: #f5efe2;
+      --soft: #f0eadf;
       --muted: #69665f;
       --line: rgba(5, 5, 5, 0.15);
       --red: #ef1b18;
@@ -288,9 +289,256 @@
       border: 2px solid #ebe6da;
     }
 
+    .main-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .profile-hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      background: var(--black);
+      color: white;
+      padding: 24px;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .profile-hero::after {
+      content: "26";
+      position: absolute;
+      right: -12px;
+      bottom: -34px;
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 170px;
+      line-height: 0.8;
+      letter-spacing: -0.12em;
+      opacity: 0.13;
+    }
+
+    .profile-img {
+      width: 128px;
+      height: 128px;
+      border-radius: 34px;
+      object-fit: cover;
+      border: 3px solid white;
+      background: #eee;
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.30);
+    }
+
+    .profile-hero small {
+      display: inline-flex;
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: white;
+      color: var(--black);
+      font-size: 12px;
+      font-weight: 1000;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-top: 14px;
+    }
+
+    .profile-hero h2 {
+      position: relative;
+      z-index: 1;
+      margin: 18px 0 8px;
+      font-size: 38px;
+      line-height: 1.05;
+      letter-spacing: -0.075em;
+    }
+
+    .profile-hero p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: rgba(255, 253, 247, 0.78);
+      font-weight: 720;
+    }
+
+    .profile-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .dashboard-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .dashboard-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin: 28px 0 14px;
+    }
+
+    .section-title:first-child {
+      margin-top: 0;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.1;
+      letter-spacing: -0.055em;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 750;
+      text-align: right;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: white;
+      padding: 20px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      letter-spacing: -0.045em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 680;
+    }
+
+    .compact-card {
+      min-height: 170px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .mini-item {
+      padding: 12px;
+      border-radius: 16px;
+      background: var(--soft);
+      border: 1px solid rgba(5, 5, 5, 0.10);
+    }
+
+    .mini-item small {
+      display: block;
+      margin-bottom: 3px;
+      color: #173f85;
+      font-weight: 1000;
+    }
+
+    .mini-item strong {
+      display: block;
+      line-height: 1.25;
+      letter-spacing: -0.035em;
+    }
+
+    .weather-mini {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .weather-item {
+      padding: 14px;
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(56, 234, 213, 0.16), rgba(184, 255, 0, 0.13)),
+        white;
+      border: 1px solid var(--line);
+    }
+
+    .weather-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .weather-item strong {
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .stats-mini {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .stat-box {
+      padding: 14px;
+      border-radius: 18px;
+      background: var(--soft);
+      border: 1px solid rgba(5, 5, 5, 0.10);
+    }
+
+    .stat-box strong {
+      display: block;
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+    }
+
+    .stat-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 820;
+      line-height: 1.35;
+    }
+
     .headline {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) 210px;
+      grid-template-columns: minmax(0, 1.1fr) 240px;
       gap: 18px;
       margin-bottom: 20px;
     }
@@ -376,69 +624,6 @@
       font-size: 40px;
       line-height: 1;
       letter-spacing: -0.04em;
-    }
-
-    .section-title {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 18px;
-      margin: 28px 0 14px;
-    }
-
-    .section-title:first-child {
-      margin-top: 0;
-    }
-
-    .section-title h2 {
-      margin: 0;
-      font-size: 28px;
-      line-height: 1.1;
-      letter-spacing: -0.055em;
-    }
-
-    .section-title p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 750;
-      text-align: right;
-    }
-
-    .grid {
-      display: grid;
-      gap: 16px;
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .grid-4 {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .card {
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: white;
-      padding: 20px;
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 20px;
-      letter-spacing: -0.045em;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-weight: 680;
     }
 
     .match {
@@ -633,36 +818,6 @@
       font-size: 14px;
     }
 
-    .weather-box {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 16px;
-    }
-
-    .weather-item {
-      padding: 17px;
-      border-radius: 22px;
-      background:
-        linear-gradient(135deg, rgba(56, 234, 213, 0.16), rgba(184, 255, 0, 0.13)),
-        white;
-      border: 1px solid var(--line);
-    }
-
-    .weather-item span {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 900;
-      margin-bottom: 4px;
-    }
-
-    .weather-item strong {
-      font-size: 28px;
-      line-height: 1;
-      letter-spacing: -0.05em;
-    }
-
     .search-form {
       display: flex;
       gap: 10px;
@@ -744,7 +899,7 @@
       font-weight: 700;
     }
 
-    @media (max-width: 980px) {
+    @media (max-width: 1100px) {
       body {
         overflow: auto;
       }
@@ -768,26 +923,28 @@
       }
 
       .desktop {
-        min-height: 760px;
+        min-height: 860px;
       }
 
       .window {
         inset: 0;
-        min-height: 760px;
+        min-height: 860px;
       }
 
+      .main-grid,
       .headline {
         grid-template-columns: 1fr;
       }
 
+      .dashboard-row,
       .grid-2,
       .grid-3,
       .grid-4 {
         grid-template-columns: 1fr;
       }
 
-      .weather-box {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .stats-mini {
+        grid-template-columns: 1fr;
       }
 
       .section-title {
@@ -825,6 +982,10 @@
         padding: 16px;
       }
 
+      .profile-hero {
+        min-height: 360px;
+      }
+
       .headline-main {
         min-height: 300px;
         padding: 22px;
@@ -842,7 +1003,7 @@
         font-size: 42px;
       }
 
-      .weather-box {
+      .weather-mini {
         grid-template-columns: 1fr;
       }
 
@@ -871,36 +1032,142 @@
   <div class="app">
     <aside class="sidebar">
       <section class="brand">
-        <span class="brand-badge">FIFA WORLD CUP</span>
+        <span class="brand-badge">DASHBOARD</span>
         <span class="big26">26</span>
         <h1>사회복지<br />실무역량</h1>
       </section>
 
       <nav class="menu" aria-label="페이지 메뉴">
-        <button type="button" class="nav-btn active" onclick="openWindow('koreaWindow', this)">대한민국 일정</button>
-        <button type="button" class="nav-btn" onclick="openWindow('scheduleWindow', this)">전체 일정</button>
-        <button type="button" class="nav-btn" onclick="openWindow('weatherWindow', this)">부산 날씨</button>
-        <button type="button" class="nav-btn" onclick="openWindow('busanWindow', this)">부산 이슈</button>
-        <button type="button" class="nav-btn" onclick="openWindow('pknuWindow', this)">부경대 뉴스</button>
-        <button type="button" class="nav-btn" onclick="openWindow('welfareWindow', this)">복지 통계</button>
+        <button type="button" class="nav-btn active" onclick="openWindow('mainWindow', this)">메인 화면</button>
+        <button type="button" class="nav-btn" onclick="openWindow('worldcupWindow', this)">월드컵 정보</button>
       </nav>
 
       <div class="sidebar-bottom">
-        GitHub Pages용 단일 파일 홈페이지<br />
-        파일명: index.html
+        부경대학교<br />
+        202510339 이로빈
       </div>
     </aside>
 
     <main class="desktop">
-      <section id="koreaWindow" class="window active">
+      <section id="mainWindow" class="window active">
         <div class="titlebar">
           <div class="traffic">
             <span class="dot red"></span>
             <span class="dot yellow"></span>
             <span class="dot green"></span>
           </div>
-          <div class="window-name">대한민국 조별리그 일정</div>
-          <div class="window-badge">GROUP A</div>
+          <div class="window-name">메인 대시보드</div>
+          <div class="window-badge">HOME</div>
+        </div>
+
+        <div class="window-body">
+          <div class="main-grid">
+            <article class="profile-hero">
+              <div>
+                <img
+                  class="profile-img"
+                  src="profile.png"
+                  alt="이로빈 프로필 사진"
+                  onerror="this.onerror=null; this.src='3b7ec8fe-b6bc-459a-80cc-bad971e904fa.png';"
+                />
+                <br />
+                <small>Profile</small>
+                <h2>부경대학교<br />202510339<br />이로빈</h2>
+                <p>사회복지실무역량 과제용 정보 페이지</p>
+              </div>
+
+              <div class="profile-actions">
+                <button type="button" class="ui" onclick="openWindowById('worldcupWindow')">월드컵 정보 보기</button>
+              </div>
+            </article>
+
+            <div class="dashboard-stack">
+              <div class="dashboard-row">
+                <article class="card compact-card">
+                  <h3>부산 현재 날씨</h3>
+                  <p id="weatherDesc">날씨 정보를 불러오는 중...</p>
+                  <div class="weather-mini">
+                    <div class="weather-item">
+                      <span>기온</span>
+                      <strong id="temp">-</strong>
+                    </div>
+                    <div class="weather-item">
+                      <span>습도</span>
+                      <strong id="humidity">-</strong>
+                    </div>
+                    <div class="weather-item">
+                      <span>강수량</span>
+                      <strong id="rain">-</strong>
+                    </div>
+                    <div class="weather-item">
+                      <span>풍속</span>
+                      <strong id="wind">-</strong>
+                    </div>
+                  </div>
+                  <div class="btn-row" style="margin-top:14px;margin-bottom:0;">
+                    <button class="ui secondary" type="button" onclick="loadWeather()">새로고침</button>
+                  </div>
+                </article>
+
+                <article class="card compact-card">
+                  <h3>부산 이슈</h3>
+                  <p>지역 이슈 요약 및 뉴스 검색</p>
+                  <div class="mini-list" id="busanIssues"></div>
+                  <form class="search-form" onsubmit="searchNews(event, 'busan')">
+                    <input id="busanKeyword" type="text" value="부산 고령화 지역사회복지" aria-label="부산 이슈 검색어" />
+                    <button class="ui" type="submit">검색</button>
+                  </form>
+                </article>
+              </div>
+
+              <div class="dashboard-row">
+                <article class="card compact-card">
+                  <h3>학교 이슈</h3>
+                  <p>부경대 소식 요약 및 뉴스 검색</p>
+                  <div class="mini-list" id="pknuNews"></div>
+                  <form class="search-form" onsubmit="searchNews(event, 'pknu')">
+                    <input id="pknuKeyword" type="text" value="부경대학교 사회복지 지역사회" aria-label="부경대 뉴스 검색어" />
+                    <button class="ui" type="submit">검색</button>
+                  </form>
+                </article>
+
+                <article class="card compact-card">
+                  <h3>복지 통계</h3>
+                  <p>사회복지 관련 기본 통계</p>
+                  <div class="stats-mini">
+                    <div class="stat-box">
+                      <strong>24.5%</strong>
+                      <span>부산 65세 이상 고령인구 비중</span>
+                    </div>
+                    <div class="stat-box">
+                      <strong>5.1%</strong>
+                      <span>전국 등록장애인 비중</span>
+                    </div>
+                    <div class="stat-box">
+                      <strong>2018~24</strong>
+                      <span>기초생활보장 수급자 데이터</span>
+                    </div>
+                  </div>
+                  <div class="btn-row" style="margin-top:14px;margin-bottom:0;">
+                    <a class="ui secondary" href="https://www.kostat.go.kr/board.es?act=view&bid=10820&list_no=438832&mid=a10301010000" target="_blank" rel="noopener">고령자 통계</a>
+                    <a class="ui secondary" href="https://www.mohw.go.kr/board.es?act=view&bid=0027&list_no=1490145&mid=a10503010100" target="_blank" rel="noopener">장애인 통계</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="worldcupWindow" class="window">
+        <div class="titlebar">
+          <div class="traffic">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="window-name">2026 월드컵 정보</div>
+          <div class="window-badge">FIFA WORLD CUP 26</div>
         </div>
 
         <div class="window-body">
@@ -962,60 +1229,44 @@
           </div>
 
           <div class="section-title">
-            <h2>대회 요약</h2>
-            <p>2026 FIFA World Cup</p>
-          </div>
-
-          <div class="grid grid-4">
-            <article class="card">
-              <h3>개최국</h3>
-              <div class="stat-number">3</div>
-              <p>캐나다 · 멕시코 · 미국</p>
-            </article>
-            <article class="card">
-              <h3>참가팀</h3>
-              <div class="stat-number">48</div>
-              <p>48개국 본선 체제</p>
-            </article>
-            <article class="card">
-              <h3>조 편성</h3>
-              <div class="stat-number">12</div>
-              <p>12개 조 조별리그</p>
-            </article>
-            <article class="card">
-              <h3>전체 경기</h3>
-              <div class="stat-number">104</div>
-              <p>개막전부터 결승까지</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="scheduleWindow" class="window">
-        <div class="titlebar">
-          <div class="traffic">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-          <div class="window-name">전체 일정</div>
-          <div class="window-badge">BUTTON VIEW</div>
-        </div>
-
-        <div class="window-body">
-          <div class="section-title">
-            <h2>전체 일정</h2>
-            <p>버튼을 누르면 해당 일정이 표시됩니다.</p>
+            <h2>다른 월드컵 정보</h2>
+            <p>버튼을 누르면 해당 정보가 표시됩니다.</p>
           </div>
 
           <div class="btn-row">
-            <button type="button" class="ui sub-btn active" onclick="openSubPanel('groupsPanel', this)">조 편성</button>
+            <button type="button" class="ui sub-btn active" onclick="openSubPanel('summaryPanel', this)">대회 요약</button>
+            <button type="button" class="ui sub-btn" onclick="openSubPanel('groupsPanel', this)">조 편성</button>
             <button type="button" class="ui sub-btn" onclick="openSubPanel('phasePanel', this)">토너먼트</button>
             <button type="button" class="ui sub-btn" onclick="openSubPanel('featuredPanel', this)">주요 경기</button>
             <a class="ui secondary" href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures" target="_blank" rel="noopener">FIFA 공식 일정</a>
           </div>
 
-          <div id="groupsPanel" class="sub-panel active">
+          <div id="summaryPanel" class="sub-panel active">
+            <div class="grid grid-4">
+              <article class="card">
+                <h3>개최국</h3>
+                <div class="stat-number">3</div>
+                <p>캐나다 · 멕시코 · 미국</p>
+              </article>
+              <article class="card">
+                <h3>참가팀</h3>
+                <div class="stat-number">48</div>
+                <p>48개국 본선 체제</p>
+              </article>
+              <article class="card">
+                <h3>조 편성</h3>
+                <div class="stat-number">12</div>
+                <p>12개 조 조별리그</p>
+              </article>
+              <article class="card">
+                <h3>전체 경기</h3>
+                <div class="stat-number">104</div>
+                <p>개막전부터 결승까지</p>
+              </article>
+            </div>
+          </div>
+
+          <div id="groupsPanel" class="sub-panel">
             <div id="groupGrid" class="grid grid-4"></div>
           </div>
 
@@ -1051,134 +1302,6 @@
               </table>
             </article>
           </div>
-        </div>
-      </section>
-
-      <section id="weatherWindow" class="window">
-        <div class="titlebar">
-          <div class="traffic">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-          <div class="window-name">부산 현재 날씨</div>
-          <div class="window-badge">BUSAN</div>
-        </div>
-
-        <div class="window-body">
-          <section class="card">
-            <h3 id="weatherTitle">날씨 정보를 불러오는 중...</h3>
-            <p id="weatherDesc">인터넷 연결 상태에 따라 몇 초 정도 걸릴 수 있습니다.</p>
-            <div class="weather-box">
-              <div class="weather-item">
-                <span>현재 기온</span>
-                <strong id="temp">-</strong>
-              </div>
-              <div class="weather-item">
-                <span>습도</span>
-                <strong id="humidity">-</strong>
-              </div>
-              <div class="weather-item">
-                <span>강수량</span>
-                <strong id="rain">-</strong>
-              </div>
-              <div class="weather-item">
-                <span>풍속</span>
-                <strong id="wind">-</strong>
-              </div>
-            </div>
-            <div class="btn-row" style="margin-top:16px;margin-bottom:0;">
-              <button class="ui" type="button" onclick="loadWeather()">날씨 새로고침</button>
-            </div>
-          </section>
-        </div>
-      </section>
-
-      <section id="busanWindow" class="window">
-        <div class="titlebar">
-          <div class="traffic">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-          <div class="window-name">부산의 이슈</div>
-          <div class="window-badge">NEWS</div>
-        </div>
-
-        <div class="window-body">
-          <div class="grid grid-2">
-            <article class="card">
-              <h3>부산 이슈 검색</h3>
-              <p>키워드를 입력하면 네이버 뉴스 검색 결과로 이동합니다.</p>
-              <form class="search-form" onsubmit="searchNews(event, 'busan')">
-                <input id="busanKeyword" type="text" value="부산 고령화 지역사회복지" aria-label="부산 이슈 검색어" />
-                <button class="ui" type="submit">검색</button>
-              </form>
-              <div class="btn-row" style="margin-top:16px;margin-bottom:0;">
-                <a class="ui secondary" href="https://www.busan.go.kr/news" target="_blank" rel="noopener">부산시보</a>
-                <a class="ui secondary" href="https://www.busan.go.kr/nbnews" target="_blank" rel="noopener">부산 통합 공지사항</a>
-              </div>
-            </article>
-
-            <article class="card">
-              <h3>지역 이슈 요약</h3>
-              <div class="news-list" id="busanIssues"></div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="pknuWindow" class="window">
-        <div class="titlebar">
-          <div class="traffic">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-          <div class="window-name">부경대 뉴스</div>
-          <div class="window-badge">PKNU</div>
-        </div>
-
-        <div class="window-body">
-          <div class="grid grid-2">
-            <article class="card">
-              <h3>부경대 뉴스 검색</h3>
-              <p>키워드를 입력하면 네이버 뉴스 검색 결과로 이동합니다.</p>
-              <form class="search-form" onsubmit="searchNews(event, 'pknu')">
-                <input id="pknuKeyword" type="text" value="부경대학교 사회복지 지역사회" aria-label="부경대 뉴스 검색어" />
-                <button class="ui" type="submit">검색</button>
-              </form>
-              <div class="btn-row" style="margin-top:16px;margin-bottom:0;">
-                <a class="ui secondary" href="https://www.pknu.ac.kr/main" target="_blank" rel="noopener">부경대 공식 홈페이지</a>
-                <a class="ui secondary" href="https://www.pknu.ac.kr/main/163" target="_blank" rel="noopener">부경대 공지사항</a>
-                <a class="ui secondary" href="https://press.pknu.ac.kr/" target="_blank" rel="noopener">부경언론사</a>
-              </div>
-            </article>
-
-            <article class="card">
-              <h3>학교 소식 요약</h3>
-              <div class="news-list" id="pknuNews"></div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="welfareWindow" class="window">
-        <div class="titlebar">
-          <div class="traffic">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-          <div class="window-name">사회복지 관련 통계</div>
-          <div class="window-badge">STATS</div>
-        </div>
-
-        <div class="window-body">
-          <div class="grid grid-3" id="welfareStats"></div>
-          <p class="footer-note">
-            수업 과제용 비공식 정보 페이지입니다. FIFA, 부산시, 부경대학교의 공식 홈페이지가 아닙니다.
-          </p>
         </div>
       </section>
     </main>
@@ -1226,17 +1349,12 @@
       {
         category: "고령화",
         title: "초고령사회와 지역 돌봄",
-        desc: "노인 돌봄, 건강지원, 이동 편의 관련 이슈를 확인할 수 있습니다."
+        desc: "노인 돌봄, 건강지원, 이동 편의 관련 이슈"
       },
       {
         category: "청년",
         title: "청년 유출과 지역 활력",
-        desc: "대학, 취업, 주거, 문화 인프라 관련 이슈를 확인할 수 있습니다."
-      },
-      {
-        category: "생활환경",
-        title: "교통·주거·접근성 문제",
-        desc: "주민 생활과 서비스 이용 조건을 살펴볼 수 있습니다."
+        desc: "대학, 취업, 주거, 문화 인프라 관련 이슈"
       }
     ];
 
@@ -1244,44 +1362,12 @@
       {
         category: "학사 정보",
         title: "공지사항 확인",
-        desc: "학사 일정, 장학, 비교과 프로그램, 현장실습 정보를 확인할 수 있습니다."
-      },
-      {
-        category: "지역 연계",
-        title: "대학과 지역사회",
-        desc: "연구, 봉사, 산학협력 관련 소식을 확인할 수 있습니다."
+        desc: "학사 일정, 장학, 비교과, 현장실습 정보"
       },
       {
         category: "학생 생활",
         title: "캠퍼스 이슈",
-        desc: "학생 복지, 상담, 학습 지원 관련 소식을 확인할 수 있습니다."
-      }
-    ];
-
-    const welfareStats = [
-      {
-        label: "부산 65세 이상 고령인구 비중",
-        value: "24.5%",
-        desc: "2025년 고령자 통계 기준",
-        bar: 82,
-        source: "통계청 2025 고령자 통계",
-        url: "https://www.kostat.go.kr/board.es?act=view&bid=10820&list_no=438832&mid=a10301010000"
-      },
-      {
-        label: "전국 등록장애인 비중",
-        value: "5.1%",
-        desc: "2025년 말 기준 등록장애인 현황",
-        bar: 51,
-        source: "보건복지부 등록장애인 현황",
-        url: "https://www.mohw.go.kr/board.es?act=view&bid=0027&list_no=1490145&mid=a10503010100"
-      },
-      {
-        label: "기초생활보장 수급자 데이터",
-        value: "2018~2024",
-        desc: "시도별 기초생활보장 수급자 수 데이터",
-        bar: 70,
-        source: "공공데이터포털",
-        url: "https://www.data.go.kr/data/15001654/fileData.do"
+        desc: "학생 복지, 상담, 학습 지원 관련 소식"
       }
     ];
 
@@ -1291,6 +1377,20 @@
 
       document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
+    }
+
+    function openWindowById(windowId) {
+      const targetButton = Array.from(document.querySelectorAll(".nav-btn")).find(btn => {
+        return btn.getAttribute("onclick") && btn.getAttribute("onclick").includes(windowId);
+      });
+
+      document.querySelectorAll(".window").forEach(window => window.classList.remove("active"));
+      document.getElementById(windowId).classList.add("active");
+
+      document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
+      if (targetButton) {
+        targetButton.classList.add("active");
+      }
     }
 
     function openSubPanel(panelId, button) {
@@ -1341,29 +1441,14 @@
       `).join("");
     }
 
-    function renderNewsCards(targetId, data) {
+    function renderMiniCards(targetId, data) {
       const box = document.getElementById(targetId);
       box.innerHTML = data.map(item => `
-        <div class="news-item">
+        <div class="mini-item">
           <small>${item.category}</small>
           <strong>${item.title}</strong>
           <p>${item.desc}</p>
         </div>
-      `).join("");
-    }
-
-    function renderWelfareStats() {
-      const box = document.getElementById("welfareStats");
-      box.innerHTML = welfareStats.map(item => `
-        <article class="card">
-          <h3>${item.label}</h3>
-          <div class="stat-number">${item.value}</div>
-          <p>${item.desc}</p>
-          <div class="bar" aria-label="${item.label} 시각화">
-            <div style="--value: ${item.bar}%"></div>
-          </div>
-          <a class="source" href="${item.url}" target="_blank" rel="noopener">${item.source} ↗</a>
-        </article>
       `).join("");
     }
 
@@ -1412,10 +1497,8 @@
     }
 
     async function loadWeather() {
-      const title = document.getElementById("weatherTitle");
       const desc = document.getElementById("weatherDesc");
 
-      title.textContent = "날씨 정보를 불러오는 중...";
       desc.textContent = "부산 현재 날씨 데이터를 확인하고 있습니다.";
 
       try {
@@ -1430,16 +1513,14 @@
         const current = data.current;
         const weatherText = weatherCodeToText(current.weather_code);
 
-        title.textContent = `부산 현재 날씨: ${weatherText}`;
-        desc.textContent = `업데이트 시간: ${current.time}`;
+        desc.textContent = `부산 현재 날씨: ${weatherText} · 업데이트 ${current.time}`;
 
         document.getElementById("temp").textContent = `${current.temperature_2m}℃`;
         document.getElementById("humidity").textContent = `${current.relative_humidity_2m}%`;
         document.getElementById("rain").textContent = `${current.precipitation}mm`;
         document.getElementById("wind").textContent = `${current.wind_speed_10m}km/h`;
       } catch (error) {
-        title.textContent = "날씨 정보를 불러오지 못했습니다.";
-        desc.textContent = "네트워크 상태를 확인하거나 잠시 후 다시 시도해 주세요.";
+        desc.textContent = "날씨 정보를 불러오지 못했습니다.";
         document.getElementById("temp").textContent = "-";
         document.getElementById("humidity").textContent = "-";
         document.getElementById("rain").textContent = "-";
@@ -1450,9 +1531,8 @@
     renderGroups();
     renderPhaseSchedule();
     renderFeaturedMatches();
-    renderNewsCards("busanIssues", busanIssues);
-    renderNewsCards("pknuNews", pknuNews);
-    renderWelfareStats();
+    renderMiniCards("busanIssues", busanIssues);
+    renderMiniCards("pknuNews", pknuNews);
     loadWeather();
   </script>
 </body>
