@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>사회복지실무역량 | 2026 월드컵 & 지역정보 대시보드</title>
+  <style>
+    :root {
+      --grass: #0e5a3f;
+      --grass-dark: #073623;
+      --grass-soft: #167a52;
+      --cream: #fff6df;
+      --paper: #f7ead0;
+      --ink: #111511;
+      --muted: #6a624f;
+      --gold: #d8a932;
+      --line: rgba(17, 21, 17, 0.14);
+      --red: #c9222c;
+      --blue: #1f5fab;
+      --green: #11824c;
+      --white: #fffdf5;
+      --shadow: 0 20px 60px rgba(3, 24, 15, 0.28);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif;
+      color: var(--ink);
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(216, 169, 50, 0.28), transparent 24%),
+        radial-gradient(circle at 88% 0%, rgba(31, 95, 171, 0.18), transparent 28%),
+        linear-gradient(135deg, #f7ead0 0%, #fff8e8 52%, #edf4e6 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(255, 248, 232, 0.84);
+      border-bottom: 1px solid rgba(17, 21, 17, 0.12);
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 16px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--grass-dark);
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 50%, var(--white) 0 27%, transparent 28%),
+        conic-gradient(from 45deg, var(--red), var(--gold), var(--green), var(--blue), var(--red));
+      box-shadow: 0 10px 24px rgba(14, 90, 63, 0.28);
+      color: var(--grass-dark);
+      font-size: 12px;
+      border: 2px solid var(--cream);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: #384437;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 62px 22px 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.24fr) minmax(300px, 0.76fr);
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .hero-main {
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      padding: 46px;
+      border-radius: calc(var(--radius) + 12px);
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 49.5%, rgba(255, 255, 255, 0.34) 50%, rgba(255, 255, 255, 0.08) 50.5%),
+        linear-gradient(0deg, transparent 47%, rgba(255, 255, 255, 0.18) 47.4%, rgba(255, 255, 255, 0.18) 52.6%, transparent 53%),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.07) 0 80px, rgba(255, 255, 255, 0.02) 80px 160px),
+        linear-gradient(135deg, #0e5a3f, #073623);
+      color: var(--cream);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-main::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border: 3px solid rgba(255, 255, 255, 0.22);
+      border-radius: 50%;
+      right: -74px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      inset: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.20);
+      border-radius: calc(var(--radius) + 2px);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 246, 223, 0.12);
+      border: 1px solid rgba(255, 246, 223, 0.26);
+      color: #ffe4a0;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 6.6vw, 76px);
+      line-height: 0.95;
+      letter-spacing: -0.08em;
+    }
+
+    .hero-main p {
+      max-width: 740px;
+      margin: 24px 0 0;
+      color: rgba(255, 246, 223, 0.92);
+      font-size: 18px;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 16px;
+    }
+
+    .ticket {
+      position: relative;
+      overflow: hidden;
+      padding: 26px;
+      border-radius: var(--radius);
+      background: var(--white);
+      border: 1px solid rgba(17, 21, 17, 0.12);
+      box-shadow: 0 16px 38px rgba(3, 24, 15, 0.12);
+    }
+
+    .ticket::before,
+    .ticket::after {
+      content: "";
+      position: absolute;
+      right: 62px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #f7ead0;
+      border: 1px solid rgba(17, 21, 17, 0.08);
+    }
+
+    .ticket::before {
+      top: -18px;
+    }
+
+    .ticket::after {
+      bottom: -18px;
+    }
+
+    .ticket small {
+      display: block;
+      color: var(--muted);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .ticket strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 34px;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      color: var(--grass-dark);
+    }
+
+    .ticket span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 22px 84px;
+    }
+
+    section {
+      margin-top: 40px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-end;
+      margin-bottom: 16px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.18;
+      letter-spacing: -0.055em;
+      color: var(--grass-dark);
+    }
+
+    .section-title p {
+      margin: 0;
+      max-width: 660px;
+      text-align: right;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      border: 1px solid rgba(17, 21, 17, 0.12);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 245, 0.88);
+      box-shadow: 0 14px 40px rgba(3, 24, 15, 0.10);
+      padding: 24px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: -0.04em;
+      color: var(--grass-dark);
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .feature-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 190px;
+    }
+
+    .feature-card::after {
+      content: "";
+      position: absolute;
+      right: -36px;
+      bottom: -36px;
+      width: 122px;
+      height: 122px;
+      border-radius: 50%;
+      border: 18px solid rgba(14, 90, 63, 0.08);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 17px;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(14, 90, 63, 0.10);
+      border: 1px solid rgba(14, 90, 63, 0.18);
+      color: var(--grass-dark);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .tag.red {
+      background: rgba(201, 34, 44, 0.10);
+      color: #8e1721;
+    }
+
+    .tag.blue {
+      background: rgba(31, 95, 171, 0.10);
+      color: #194a85;
+    }
+
+    .tag.gold {
+      background: rgba(216, 169, 50, 0.17);
+      color: #76550c;
+    }
+
+    .schedule {
+      overflow: hidden;
+      padding: 0;
+      background: var(--white);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(17, 21, 17, 0.10);
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      background: var(--grass-dark);
+      color: var(--cream);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(14, 90, 63, 0.10);
+      color: var(--grass-dark);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .status.hot {
+      background: rgba(201, 34, 44, 0.12);
+      color: #8e1721;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    button,
+    .btn {
+      border: 0;
+      cursor: pointer;
+      padding: 11px 15px;
+      border-radius: 999px;
+      background: var(--grass-dark);
+      color: var(--cream);
+      font-weight: 900;
+      font-size: 14px;
+      transition: transform 0.16s ease, opacity 0.16s ease;
+      box-shadow: 0 8px 18px rgba(7, 54, 35, 0.18);
+    }
+
+    button:hover,
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .btn.secondary {
+      background: var(--white);
+      color: var(--grass-dark);
+      border: 1px solid rgba(17, 21, 17, 0.12);
+      box-shadow: none;
+    }
+
+    .weather-box {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .weather-item {
+      padding: 16px;
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(14, 90, 63, 0.12), rgba(216, 169, 50, 0.12)),
+        var(--white);
+      border: 1px solid rgba(17, 21, 17, 0.10);
+    }
+
+    .weather-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 4px;
+      font-weight: 800;
+    }
+
+    .weather-item strong {
+      font-size: 24px;
+      color: var(--grass-dark);
+      letter-spacing: -0.04em;
+    }
+
+    .search-form {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .search-form input {
+      flex: 1;
+      min-width: 0;
+      border: 1px solid rgba(17, 21, 17, 0.14);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--ink);
+      padding: 12px 15px;
+      outline: none;
+      font-weight: 700;
+    }
+
+    .news-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .news-item {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(14, 90, 63, 0.07);
+      border: 1px solid rgba(14, 90, 63, 0.12);
+    }
+
+    .news-item small {
+      display: block;
+      color: #8e1721;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .news-item strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--grass-dark);
+    }
+
+    .stat-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-number {
+      margin: 8px 0 8px;
+      color: var(--grass-dark);
+      font-size: 34px;
+      font-weight: 950;
+      letter-spacing: -0.055em;
+    }
+
+    .bar {
+      height: 10px;
+      margin-top: 18px;
+      border-radius: 999px;
+      background: rgba(17, 21, 17, 0.10);
+      overflow: hidden;
+    }
+
+    .bar div {
+      height: 100%;
+      width: var(--value);
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--green), var(--gold), var(--red));
+    }
+
+    .source {
+      display: inline-block;
+      margin-top: 14px;
+      color: #8e1721;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .notice {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(216, 169, 50, 0.14);
+      color: #5d450b;
+      border: 1px solid rgba(216, 169, 50, 0.22);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 30px 22px 42px;
+      text-align: center;
+      color: var(--cream);
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 49.5%, rgba(255, 255, 255, 0.22) 50%, rgba(255, 255, 255, 0.05) 50.5%),
+        var(--grass-dark);
+      border-top: 1px solid rgba(17, 21, 17, 0.16);
+    }
+
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 42px;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .weather-box {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-title {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .section-title p {
+        text-align: left;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-main {
+        padding: 30px;
+      }
+
+      .weather-box {
+        grid-template-columns: 1fr;
+      }
+
+      th,
+      td {
+        padding: 13px 10px;
+        font-size: 14px;
+      }
+
+      .search-form {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a class="logo" href="#top" aria-label="홈으로 이동">
+        <span class="logo-mark">26</span>
+        <span>사회복지실무역량</span>
+      </a>
+      <div class="nav-links">
+        <a href="#worldcup">월드컵 소개</a>
+        <a href="#schedule">주요 일정</a>
+        <a href="#weather">부산 날씨</a>
+        <a href="#busan">부산 이슈</a>
+        <a href="#pknu">부경대 뉴스</a>
+        <a href="#welfare">복지 통계</a>
+      </div>
+    </nav>
+  </header>
+
+  <div id="top" class="hero">
+    <section class="hero-main" aria-labelledby="heroTitle">
+      <div class="hero-content">
+        <div class="eyebrow">World Cup 2026 · Local Welfare Dashboard</div>
+        <h1 id="heroTitle">사회복지실무역량</h1>
+        <p>
+          2026 FIFA 월드컵 정보를 중심으로, 부산 날씨·지역 이슈·부경대 뉴스·사회복지 통계를 함께 확인할 수 있는 수업용 웹페이지입니다.
+          축구 대회처럼 여러 지역과 사람들이 연결되는 장면을 사회복지 실무의 정보 수집 역량과 연결해 구성했습니다.
+        </p>
+        <div class="button-row">
+          <a class="btn" href="#worldcup">월드컵 정보 보기</a>
+          <a class="btn secondary" href="#welfare">복지 통계 보기</a>
+        </div>
+      </div>
+    </section>
+
+    <aside class="hero-side" aria-label="대회 요약">
+      <article class="ticket">
+        <small>Host Countries</small>
+        <strong>3개국</strong>
+        <span>캐나다 · 멕시코 · 미국 공동 개최</span>
+      </article>
+      <article class="ticket">
+        <small>Teams</small>
+        <strong>48팀</strong>
+        <span>월드컵 최초 48개국 본선 체제</span>
+      </article>
+      <article class="ticket">
+        <small>Matches</small>
+        <strong>104경기</strong>
+        <span>북중미 16개 개최 도시에서 진행</span>
+      </article>
+    </aside>
+  </div>
+
+  <main>
+    <section id="worldcup">
+      <div class="section-title">
+        <h2>2026 월드컵 소개</h2>
+        <p>월드컵 정보를 단순 스포츠 뉴스가 아니라, 도시·관광·이동·복지 접근성까지 연결되는 대형 국제행사 정보로 정리했습니다.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card feature-card">
+          <h3>대회 개요</h3>
+          <p>
+            2026 FIFA 월드컵은 캐나다, 멕시코, 미국이 함께 개최하는 대회입니다.
+            본선 규모가 48개 팀으로 확대되며, 더 많은 국가와 도시가 대회에 참여합니다.
+          </p>
+          <div class="tag-row">
+            <span class="tag red">Canada</span>
+            <span class="tag">Mexico</span>
+            <span class="tag blue">USA</span>
+          </div>
+        </article>
+
+        <article class="card feature-card">
+          <h3>운영 포인트</h3>
+          <p>
+            16개 개최 도시, 장거리 이동, 대규모 관중, 경기장 접근성 등은 월드컵 운영에서 중요한 요소입니다.
+            이는 교통, 안전, 관광, 장애인 접근성 문제와도 이어집니다.
+          </p>
+          <div class="tag-row">
+            <span class="tag">도시 운영</span>
+            <span class="tag gold">접근성</span>
+            <span class="tag">안전</span>
+          </div>
+        </article>
+
+        <article class="card feature-card">
+          <h3>사회복지와 연결</h3>
+          <p>
+            대형 스포츠 이벤트는 누구나 안전하고 편리하게 참여할 수 있어야 합니다.
+            그래서 이동권, 정보 접근성, 지역사회 서비스, 취약계층 배려가 함께 논의될 수 있습니다.
+          </p>
+          <div class="tag-row">
+            <span class="tag">이동권</span>
+            <span class="tag">정보 접근성</span>
+            <span class="tag">지역사회</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="section-title">
+        <h2>2026 월드컵 주요 일정</h2>
+        <p>공식 일정 페이지 확인을 쉽게 하기 위한 요약 표입니다. 세부 경기 일정은 대회 운영 상황에 따라 공식 페이지에서 다시 확인하는 방식이 가장 안전합니다.</p>
+      </div>
+
+      <article class="card schedule">
+        <table>
+          <thead>
+            <tr>
+              <th>날짜</th>
+              <th>구분</th>
+              <th>내용</th>
+              <th>비고</th>
+            </tr>
+          </thead>
+          <tbody id="worldcupScheduleBody"></tbody>
+        </table>
+      </article>
+
+      <div class="button-row">
+        <a class="btn" href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures" target="_blank" rel="noopener">FIFA 공식 경기 일정</a>
+        <a class="btn secondary" href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026" target="_blank" rel="noopener">FIFA 월드컵 2026 공식 페이지</a>
+      </div>
+
+      <div class="notice">
+        과제 제출 전에는 공식 일정 페이지에서 대한민국 경기와 주요 경기 일정을 한 번 더 확인한 뒤 표 내용을 수정하면 좋습니다.
+      </div>
+    </section>
+
+    <section id="weather">
+      <div class="section-title">
+        <h2>부산 현재 날씨</h2>
+        <p>부산 좌표 기준으로 Open-Meteo API에서 현재 기온, 습도, 강수량, 풍속을 불러옵니다.</p>
+      </div>
+
+      <article class="card">
+        <h3 id="weatherTitle">날씨 정보를 불러오는 중...</h3>
+        <p id="weatherDesc">인터넷 연결 상태에 따라 몇 초 정도 걸릴 수 있습니다.</p>
+        <div class="weather-box">
+          <div class="weather-item">
+            <span>현재 기온</span>
+            <strong id="temp">-</strong>
+          </div>
+          <div class="weather-item">
+            <span>습도</span>
+            <strong id="humidity">-</strong>
+          </div>
+          <div class="weather-item">
+            <span>강수량</span>
+            <strong id="rain">-</strong>
+          </div>
+          <div class="weather-item">
+            <span>풍속</span>
+            <strong id="wind">-</strong>
+          </div>
+        </div>
+        <div class="button-row">
+          <button type="button" onclick="loadWeather()">날씨 새로고침</button>
+        </div>
+      </article>
+    </section>
+
+    <section id="busan">
+      <div class="section-title">
+        <h2>부산의 이슈</h2>
+        <p>지역 이슈를 검색하고 공식 시정 소식으로 이동할 수 있도록 구성했습니다.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>부산 이슈 검색</h3>
+          <p>
+            부산의 교통, 청년정책, 고령화, 주거, 관광 이슈는 지역사회복지 실무에서도 중요한 자료가 됩니다.
+            키워드를 입력하면 네이버 뉴스 검색 결과로 이동합니다.
+          </p>
+          <form class="search-form" onsubmit="searchNews(event, 'busan')">
+            <input id="busanKeyword" type="text" value="부산 고령화 지역사회복지" aria-label="부산 이슈 검색어" />
+            <button type="submit">검색</button>
+          </form>
+          <div class="button-row">
+            <a class="btn secondary" href="https://www.busan.go.kr/news" target="_blank" rel="noopener">부산시보</a>
+            <a class="btn secondary" href="https://www.busan.go.kr/nbnews" target="_blank" rel="noopener">부산 통합 공지사항</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>지역 이슈 요약 카드</h3>
+          <div class="news-list" id="busanIssues"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="pknu">
+      <div class="section-title">
+        <h2>부경대 뉴스</h2>
+        <p>학사 공지, 학교 소식, 캠퍼스 이슈를 빠르게 확인할 수 있도록 검색과 공식 링크를 넣었습니다.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>부경대 뉴스 검색</h3>
+          <p>
+            부경대 관련 소식은 학생 생활, 비교과 프로그램, 장학, 취업, 지역 연계 활동과 연결됩니다.
+          </p>
+          <form class="search-form" onsubmit="searchNews(event, 'pknu')">
+            <input id="pknuKeyword" type="text" value="부경대학교 사회복지 지역사회" aria-label="부경대 뉴스 검색어" />
+            <button type="submit">검색</button>
+          </form>
+          <div class="button-row">
+            <a class="btn secondary" href="https://www.pknu.ac.kr/main" target="_blank" rel="noopener">부경대 공식 홈페이지</a>
+            <a class="btn secondary" href="https://www.pknu.ac.kr/main/163" target="_blank" rel="noopener">부경대 공지사항</a>
+            <a class="btn secondary" href="https://press.pknu.ac.kr/" target="_blank" rel="noopener">부경언론사</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>학교 소식 요약 카드</h3>
+          <div class="news-list" id="pknuNews"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="welfare">
+      <div class="section-title">
+        <h2>사회복지 관련 통계</h2>
+        <p>고령화, 장애인 복지, 기초생활보장 자료를 중심으로 사회복지 실무에서 참고할 만한 기본 통계를 카드로 정리했습니다.</p>
+      </div>
+
+      <div class="grid grid-3" id="welfareStats"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      © 2026 사회복지실무역량. 수업 과제용 비공식 정보 페이지입니다.
+      FIFA, 부산시, 부경대학교의 공식 홈페이지가 아닙니다.
+    </p>
+  </footer>
+
+  <script>
+    // ===== 1. 2026 월드컵 주요 일정 =====
+    const worldcupSchedules = [
+      {
+        date: "2026-06-11",
+        type: "개막전",
+        content: "멕시코시티에서 2026 월드컵 개막",
+        note: "공식 일정 확인"
+      },
+      {
+        date: "2026-06-11 ~ 2026-06-27",
+        type: "조별리그",
+        content: "48개 팀이 12개 조로 나뉘어 조별리그 진행",
+        note: "세부 일정 확인 필요"
+      },
+      {
+        date: "2026-06-28 ~ 2026-07-03",
+        type: "32강",
+        content: "토너먼트 라운드 시작",
+        note: "녹아웃 스테이지"
+      },
+      {
+        date: "2026-07-04 ~ 2026-07-07",
+        type: "16강",
+        content: "8강 진출팀 결정",
+        note: "공식 일정 확인"
+      },
+      {
+        date: "2026-07-09 ~ 2026-07-11",
+        type: "8강",
+        content: "준결승 진출팀 결정",
+        note: "공식 일정 확인"
+      },
+      {
+        date: "2026-07-14 ~ 2026-07-15",
+        type: "준결승",
+        content: "결승 진출팀 결정",
+        note: "댈러스·애틀랜타 예정"
+      },
+      {
+        date: "2026-07-19",
+        type: "결승",
+        content: "뉴욕 뉴저지 스타디움에서 결승전",
+        note: "대회 최종전"
+      }
+    ];
+
+    // ===== 2. 부산 이슈 요약 카드 =====
+    const busanIssues = [
+      {
+        category: "고령화",
+        title: "초고령사회와 지역 돌봄",
+        desc: "부산은 고령인구 비중이 높은 지역으로, 노인 돌봄·이동권·건강지원 정책의 중요성이 큽니다."
+      },
+      {
+        category: "청년",
+        title: "청년 유출과 지역 활력",
+        desc: "대학, 취업, 주거, 문화 인프라는 청년 정착과 지역사회 유지에 직접적인 영향을 줍니다."
+      },
+      {
+        category: "생활환경",
+        title: "교통·주거·접근성 문제",
+        desc: "복지 실무에서는 지역 주민이 실제로 서비스를 이용할 수 있는 거리와 이동 조건을 함께 살펴야 합니다."
+      }
+    ];
+
+    // ===== 3. 부경대 뉴스 요약 카드 =====
+    const pknuNews = [
+      {
+        category: "학사 정보",
+        title: "공지사항 확인",
+        desc: "학사 일정, 장학, 비교과 프로그램, 현장실습 정보는 공식 공지사항을 통해 확인하는 것이 가장 정확합니다."
+      },
+      {
+        category: "지역 연계",
+        title: "대학과 지역사회",
+        desc: "부경대의 연구·봉사·산학협력 소식은 부산 지역사회 문제와 연결해 해석할 수 있습니다."
+      },
+      {
+        category: "학생 생활",
+        title: "캠퍼스 이슈",
+        desc: "학생 복지, 접근성, 학습 지원, 상담 서비스 등은 사회복지실무역량과 직접 연결되는 주제입니다."
+      }
+    ];
+
+    // ===== 4. 사회복지 관련 통계 카드 =====
+    const welfareStats = [
+      {
+        label: "부산 65세 이상 고령인구 비중",
+        value: "24.5%",
+        desc: "2025년 고령자 통계 기준. 부산은 65세 이상 고령인구 비중이 높은 지역으로 분류됩니다.",
+        bar: 82,
+        source: "통계청 2025 고령자 통계",
+        url: "https://www.kostat.go.kr/board.es?act=view&bid=10820&list_no=438832&mid=a10301010000"
+      },
+      {
+        label: "전국 등록장애인 비중",
+        value: "5.1%",
+        desc: "2025년 말 기준 등록장애인은 2,627,761명이며, 주민등록인구 대비 5.1%로 발표되었습니다.",
+        bar: 51,
+        source: "보건복지부 등록장애인 현황",
+        url: "https://www.mohw.go.kr/board.es?act=view&bid=0027&list_no=1490145&mid=a10503010100"
+      },
+      {
+        label: "기초생활보장 수급자 데이터",
+        value: "2018~2024",
+        desc: "보건복지부는 시도별 기초생활보장 수급자 수 데이터를 공공데이터포털에서 제공합니다.",
+        bar: 70,
+        source: "공공데이터포털",
+        url: "https://www.data.go.kr/data/15001654/fileData.do"
+      }
+    ];
+
+    function renderWorldcupSchedule() {
+      const tbody = document.getElementById("worldcupScheduleBody");
+      tbody.innerHTML = worldcupSchedules.map(item => `
+        <tr>
+          <td>${item.date}</td>
+          <td>${item.type}</td>
+          <td>${item.content}</td>
+          <td><span class="status ${item.type === "결승" || item.type === "개막전" ? "hot" : ""}">${item.note}</span></td>
+        </tr>
+      `).join("");
+    }
+
+    function renderNewsCards(targetId, data) {
+      const box = document.getElementById(targetId);
+      box.innerHTML = data.map(item => `
+        <div class="news-item">
+          <small>${item.category}</small>
+          <strong>${item.title}</strong>
+          <p>${item.desc}</p>
+        </div>
+      `).join("");
+    }
+
+    function renderWelfareStats() {
+      const box = document.getElementById("welfareStats");
+      box.innerHTML = welfareStats.map(item => `
+        <article class="card stat-card">
+          <h3>${item.label}</h3>
+          <div class="stat-number">${item.value}</div>
+          <p>${item.desc}</p>
+          <div class="bar" aria-label="${item.label} 시각화">
+            <div style="--value: ${item.bar}%"></div>
+          </div>
+          <a class="source" href="${item.url}" target="_blank" rel="noopener">${item.source} ↗</a>
+        </article>
+      `).join("");
+    }
+
+    function searchNews(event, type) {
+      event.preventDefault();
+      const input = type === "busan"
+        ? document.getElementById("busanKeyword")
+        : document.getElementById("pknuKeyword");
+
+      const keyword = input.value.trim();
+      if (!keyword) {
+        alert("검색어를 입력해 주세요.");
+        return;
+      }
+
+      const url = "https://search.naver.com/search.naver?where=news&query=" + encodeURIComponent(keyword);
+      window.open(url, "_blank");
+    }
+
+    function weatherCodeToText(code) {
+      const map = {
+        0: "맑음",
+        1: "대체로 맑음",
+        2: "부분적으로 흐림",
+        3: "흐림",
+        45: "안개",
+        48: "서리 안개",
+        51: "약한 이슬비",
+        53: "이슬비",
+        55: "강한 이슬비",
+        61: "약한 비",
+        63: "비",
+        65: "강한 비",
+        71: "약한 눈",
+        73: "눈",
+        75: "강한 눈",
+        80: "약한 소나기",
+        81: "소나기",
+        82: "강한 소나기",
+        95: "뇌우"
+      };
+      return map[code] || "날씨 정보";
+    }
+
+    async function loadWeather() {
+      const title = document.getElementById("weatherTitle");
+      const desc = document.getElementById("weatherDesc");
+      title.textContent = "날씨 정보를 불러오는 중...";
+      desc.textContent = "부산 현재 날씨 데이터를 확인하고 있습니다.";
+
+      try {
+        const url = "https://api.open-meteo.com/v1/forecast?latitude=35.1796&longitude=129.0756&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m,weather_code&timezone=Asia%2FSeoul";
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("날씨 API 응답 오류");
+
+        const data = await response.json();
+        const current = data.current;
+        const weatherText = weatherCodeToText(current.weather_code);
+
+        title.textContent = `부산 현재 날씨: ${weatherText}`;
+        desc.textContent = `업데이트 시간: ${current.time}`;
+
+        document.getElementById("temp").textContent = `${current.temperature_2m}℃`;
+        document.getElementById("humidity").textContent = `${current.relative_humidity_2m}%`;
+        document.getElementById("rain").textContent = `${current.precipitation}mm`;
+        document.getElementById("wind").textContent = `${current.wind_speed_10m}km/h`;
+      } catch (error) {
+        title.textContent = "날씨 정보를 불러오지 못했습니다.";
+        desc.textContent = "네트워크 상태를 확인하거나 잠시 후 다시 시도해 주세요.";
+        document.getElementById("temp").textContent = "-";
+        document.getElementById("humidity").textContent = "-";
+        document.getElementById("rain").textContent = "-";
+        document.getElementById("wind").textContent = "-";
+      }
+    }
+
+    renderWorldcupSchedule();
+    renderNewsCards("busanIssues", busanIssues);
+    renderNewsCards("pknuNews", pknuNews);
+    renderWelfareStats();
+    loadWeather();
+  </script>
+</body>
+</html>
