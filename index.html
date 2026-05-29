@@ -7,37 +7,41 @@
   <style>
     :root {
       --black: #050505;
-      --ink: #121212;
-      --paper: #ffffff;
-      --cream: #f7f2e8;
-      --muted: #67645d;
-      --line: rgba(5, 5, 5, 0.13);
+      --ink: #111111;
+      --paper: #fffdf7;
+      --cream: #f5efe2;
+      --muted: #69665f;
+      --line: rgba(5, 5, 5, 0.15);
       --red: #ef1b18;
-      --orange: #ff5a19;
-      --blue: #2d48ff;
-      --purple: #6a19ff;
-      --mint: #39e8d2;
-      --green: #00b957;
-      --lime: #b9ff00;
-      --gold: #d8a934;
+      --orange: #ff5a18;
+      --blue: #2e49ff;
+      --purple: #6819ff;
+      --mint: #38ead5;
+      --green: #00ba57;
+      --lime: #b8ff00;
+      --gold: #d8aa33;
+      --shadow: 0 26px 80px rgba(0, 0, 0, 0.24);
       --radius: 28px;
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.20);
     }
 
     * {
       box-sizing: border-box;
-      scroll-behavior: smooth;
+    }
+
+    html,
+    body {
+      height: 100%;
     }
 
     body {
       margin: 0;
+      overflow: hidden;
       color: var(--ink);
       font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
-      line-height: 1.65;
       background:
-        radial-gradient(circle at 3% 3%, rgba(57, 232, 210, 0.24), transparent 23%),
-        radial-gradient(circle at 96% 2%, rgba(106, 25, 255, 0.20), transparent 25%),
-        radial-gradient(circle at 78% 98%, rgba(185, 255, 0, 0.21), transparent 28%),
+        radial-gradient(circle at 2% 2%, rgba(56, 234, 213, 0.28), transparent 24%),
+        radial-gradient(circle at 100% 0%, rgba(104, 25, 255, 0.24), transparent 26%),
+        radial-gradient(circle at 85% 100%, rgba(184, 255, 0, 0.22), transparent 28%),
         var(--cream);
     }
 
@@ -46,290 +50,364 @@
       text-decoration: none;
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(247, 242, 232, 0.88);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--line);
+    button,
+    input {
+      font-family: inherit;
     }
 
-    .nav {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 15px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .app {
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 278px minmax(0, 1fr);
       gap: 18px;
+      padding: 18px;
     }
 
-    .brand {
+    .sidebar {
+      min-height: 0;
+      border-radius: 30px;
+      background: rgba(255, 253, 247, 0.92);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.10);
+      padding: 18px;
       display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 950;
-      letter-spacing: -0.055em;
-      font-size: 18px;
-    }
-
-    .brand-mark {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      color: white;
-      font-weight: 950;
-      background:
-        linear-gradient(135deg, transparent 0 28%, rgba(255, 255, 255, 0.18) 28% 38%, transparent 38%),
-        conic-gradient(from 20deg, var(--red), var(--purple), var(--blue), var(--mint), var(--lime), var(--orange), var(--red));
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      color: #3c3b37;
-      font-size: 13px;
-      font-weight: 900;
-    }
-
-    .nav-links a {
-      padding: 7px 9px;
-      border-radius: 999px;
-    }
-
-    .nav-links a:hover {
-      background: var(--black);
-      color: white;
-    }
-
-    .hero {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 54px 22px 34px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .hero-main {
-      position: relative;
-      min-height: 520px;
-      overflow: hidden;
-      border-radius: 40px;
-      background: var(--black);
-      color: var(--cream);
-      box-shadow: var(--shadow);
-      padding: 48px;
-      display: flex;
-      align-items: flex-end;
-    }
-
-    .hero-main::before {
-      content: "26";
-      position: absolute;
-      right: -48px;
-      top: -52px;
-      font-size: clamp(190px, 34vw, 420px);
-      line-height: 0.78;
-      font-weight: 1000;
-      letter-spacing: -0.18em;
-      color: white;
-      opacity: 0.98;
-      font-family: Impact, "Arial Black", sans-serif;
-    }
-
-    .hero-main::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 74% 22%, rgba(216, 169, 52, 0.75), transparent 10%),
-        repeating-radial-gradient(circle at 84% 46%, rgba(239, 27, 24, 0.82) 0 22px, rgba(106, 25, 255, 0.82) 22px 44px, rgba(45, 72, 255, 0.82) 44px 66px, rgba(57, 232, 210, 0.82) 66px 88px, rgba(185, 255, 0, 0.82) 88px 110px),
-        linear-gradient(135deg, transparent 0 48%, rgba(255, 255, 255, 0.12) 48% 52%, transparent 52%);
-      mix-blend-mode: screen;
-      opacity: 0.43;
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 660px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 18px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: white;
-      color: var(--black);
-      font-size: 13px;
-      font-weight: 1000;
-      letter-spacing: 0.06em;
-    }
-
-    h1 {
-      margin: 0;
-      font-family: Impact, "Arial Black", "Noto Sans KR", sans-serif;
-      font-size: clamp(44px, 7.4vw, 92px);
-      line-height: 0.92;
-      letter-spacing: -0.075em;
-    }
-
-    .hero-content p {
-      margin: 22px 0 0;
-      max-width: 640px;
-      color: rgba(247, 242, 232, 0.88);
-      font-size: 18px;
-      font-weight: 650;
-    }
-
-    .korea-panel {
-      display: grid;
+      flex-direction: column;
       gap: 16px;
     }
 
-    .panel-title {
-      padding: 24px;
-      border-radius: var(--radius);
-      background: var(--paper);
-      border: 1px solid var(--line);
-      box-shadow: 0 15px 42px rgba(0, 0, 0, 0.10);
+    .brand {
+      border-radius: 24px;
+      padding: 18px;
+      background: var(--black);
+      color: var(--paper);
+      position: relative;
+      overflow: hidden;
+      min-height: 158px;
     }
 
-    .panel-title small {
+    .brand::after {
+      content: "";
+      position: absolute;
+      right: -28px;
+      bottom: -32px;
+      width: 132px;
+      height: 132px;
+      border-radius: 36px;
+      background: conic-gradient(from 30deg, var(--red), var(--purple), var(--blue), var(--mint), var(--lime), var(--orange), var(--red));
+      transform: rotate(18deg);
+      opacity: 0.88;
+    }
+
+    .brand-badge {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: white;
+      color: var(--black);
+      font-size: 12px;
+      font-weight: 1000;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+
+    .brand h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.05;
+      letter-spacing: -0.08em;
+      font-weight: 1000;
+    }
+
+    .brand .big26 {
+      position: absolute;
+      right: 17px;
+      top: 13px;
+      z-index: 1;
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 64px;
+      line-height: 1;
+      letter-spacing: -0.07em;
+      color: white;
+      opacity: 0.96;
+      text-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    }
+
+    .menu {
+      display: grid;
+      gap: 9px;
+    }
+
+    .menu button {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 13px 14px;
+      text-align: left;
+      font-size: 15px;
+      font-weight: 950;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+
+    .menu button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+    }
+
+    .menu button.active {
+      color: white;
+      background: var(--black);
+      border-color: var(--black);
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+      padding: 14px;
+      border-radius: 20px;
+      background: #f4f1ea;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .desktop {
+      position: relative;
+      min-width: 0;
+      min-height: 0;
+      border-radius: 34px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(5, 5, 5, 0.03), rgba(255, 255, 255, 0.16)),
+        rgba(255, 253, 247, 0.46);
+      border: 1px solid rgba(5, 5, 5, 0.10);
+      box-shadow: var(--shadow);
+    }
+
+    .window {
+      position: absolute;
+      inset: 18px;
+      display: none;
+      flex-direction: column;
+      min-height: 0;
+      border-radius: 30px;
+      background: rgba(255, 253, 247, 0.96);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 52px rgba(0, 0, 0, 0.14);
+      overflow: hidden;
+    }
+
+    .window.active {
+      display: flex;
+      animation: pop 0.18s ease;
+    }
+
+    @keyframes pop {
+      from {
+        opacity: 0;
+        transform: scale(0.985) translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .titlebar {
+      height: 58px;
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 0 20px;
+      background: var(--black);
+      color: white;
+    }
+
+    .traffic {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .dot {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .dot.red { background: var(--red); }
+    .dot.yellow { background: var(--gold); }
+    .dot.green { background: var(--green); }
+
+    .window-name {
+      font-weight: 1000;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .window-badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: white;
+      color: var(--black);
+      font-size: 12px;
+      font-weight: 1000;
+      white-space: nowrap;
+    }
+
+    .window-body {
+      flex: 1;
+      min-height: 0;
+      overflow: auto;
+      padding: 24px;
+    }
+
+    .window-body::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .window-body::-webkit-scrollbar-track {
+      background: #ebe6da;
+    }
+
+    .window-body::-webkit-scrollbar-thumb {
+      background: #151515;
+      border-radius: 999px;
+      border: 2px solid #ebe6da;
+    }
+
+    .headline {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) 210px;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .headline-main {
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+      border-radius: 30px;
+      background: var(--black);
+      color: var(--paper);
+      padding: 30px;
+    }
+
+    .headline-main::before {
+      content: "26";
+      position: absolute;
+      right: 24px;
+      top: 18px;
+      width: 156px;
+      height: 156px;
+      border-radius: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      background:
+        radial-gradient(circle at 72% 64%, rgba(239, 27, 24, 0.88), transparent 18%),
+        conic-gradient(from 25deg, var(--red), var(--purple), var(--blue), var(--mint), var(--lime), var(--orange), var(--red));
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 100px;
+      line-height: 1;
+      letter-spacing: -0.09em;
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.30);
+    }
+
+    .headline-main h2 {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      margin: 0;
+      font-size: clamp(38px, 5.5vw, 78px);
+      line-height: 0.95;
+      letter-spacing: -0.085em;
+      font-weight: 1000;
+    }
+
+    .headline-main p {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      margin: 18px 0 0;
+      color: rgba(255, 253, 247, 0.82);
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .headline-side {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-stat {
+      border-radius: 24px;
+      padding: 18px;
+      background: white;
+      border: 1px solid var(--line);
+    }
+
+    .mini-stat small {
       display: block;
       margin-bottom: 8px;
       color: var(--muted);
+      font-size: 12px;
       font-weight: 1000;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .panel-title strong {
+    .mini-stat strong {
       display: block;
       font-family: Impact, "Arial Black", sans-serif;
-      font-size: 48px;
-      line-height: 0.98;
+      font-size: 40px;
+      line-height: 1;
       letter-spacing: -0.04em;
-    }
-
-    .match-card {
-      position: relative;
-      overflow: hidden;
-      padding: 22px;
-      border-radius: var(--radius);
-      background: var(--paper);
-      border: 1px solid var(--line);
-      box-shadow: 0 15px 42px rgba(0, 0, 0, 0.10);
-    }
-
-    .match-card::after {
-      content: "";
-      position: absolute;
-      right: -36px;
-      bottom: -42px;
-      width: 128px;
-      height: 128px;
-      border-radius: 36px;
-      background: conic-gradient(from 90deg, var(--red), var(--purple), var(--blue), var(--mint), var(--lime), var(--orange), var(--red));
-      opacity: 0.72;
-      transform: rotate(18deg);
-    }
-
-    .match-top {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      align-items: start;
-      margin-bottom: 12px;
-    }
-
-    .match-no {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 48px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--black);
-      color: white;
-      font-weight: 1000;
-      font-size: 13px;
-    }
-
-    .match-time {
-      text-align: right;
-      font-weight: 950;
-      color: #173f85;
-    }
-
-    .match-card h3 {
-      position: relative;
-      z-index: 1;
-      margin: 0 0 8px;
-      font-size: 22px;
-      line-height: 1.25;
-      letter-spacing: -0.04em;
-    }
-
-    .match-card p {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      color: var(--muted);
-      font-weight: 750;
-    }
-
-    main {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 0 22px 88px;
-    }
-
-    section {
-      margin-top: 42px;
     }
 
     .section-title {
-      margin-bottom: 18px;
       display: flex;
-      align-items: flex-end;
+      align-items: end;
       justify-content: space-between;
       gap: 18px;
+      margin: 28px 0 14px;
+    }
+
+    .section-title:first-child {
+      margin-top: 0;
     }
 
     .section-title h2 {
       margin: 0;
-      font-family: Impact, "Arial Black", "Noto Sans KR", sans-serif;
-      font-size: clamp(30px, 4vw, 52px);
-      line-height: 0.95;
-      letter-spacing: -0.06em;
+      font-size: 28px;
+      line-height: 1.1;
+      letter-spacing: -0.055em;
     }
 
     .section-title p {
       margin: 0;
-      max-width: 650px;
       color: var(--muted);
-      text-align: right;
       font-size: 14px;
       font-weight: 750;
+      text-align: right;
     }
 
     .grid {
       display: grid;
-      gap: 18px;
+      gap: 16px;
     }
 
     .grid-2 {
@@ -346,70 +424,104 @@
 
     .card {
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 14px 42px rgba(0, 0, 0, 0.08);
-      padding: 24px;
+      border-radius: 24px;
+      background: white;
+      padding: 20px;
     }
 
     .card h3 {
-      margin: 0 0 10px;
+      margin: 0 0 8px;
       font-size: 20px;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.045em;
     }
 
     .card p {
       margin: 0;
       color: var(--muted);
-      font-weight: 650;
+      font-weight: 680;
     }
 
-    .summary-card {
-      min-height: 154px;
-    }
-
-    .summary-number {
-      margin-top: 10px;
-      font-family: Impact, "Arial Black", sans-serif;
-      font-size: 54px;
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-
-    .tag-row {
+    .match {
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 16px;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .tag {
+    .match::after {
+      content: "";
+      position: absolute;
+      right: -38px;
+      bottom: -44px;
+      width: 136px;
+      height: 136px;
+      border-radius: 38px;
+      background: conic-gradient(from 90deg, var(--red), var(--purple), var(--blue), var(--mint), var(--lime), var(--orange), var(--red));
+      opacity: 0.72;
+      transform: rotate(18deg);
+    }
+
+    .match-top,
+    .match-bottom {
+      position: relative;
+      z-index: 1;
+    }
+
+    .match-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .pill {
       display: inline-flex;
       align-items: center;
-      padding: 7px 10px;
+      justify-content: center;
+      padding: 6px 10px;
       border-radius: 999px;
-      color: var(--black);
-      background: var(--cream);
-      border: 1px solid var(--line);
-      font-weight: 950;
-      font-size: 13px;
+      background: var(--black);
+      color: white;
+      font-size: 12px;
+      font-weight: 1000;
+      white-space: nowrap;
     }
 
-    .tag.black { color: white; background: var(--black); }
-    .tag.red { background: #ffe3e0; color: #9f1515; }
-    .tag.blue { background: #e5e8ff; color: #142999; }
-    .tag.green { background: #dfffe9; color: #006b32; }
-    .tag.gold { background: #fff0bf; color: #755408; }
+    .pill.blue {
+      color: #173f85;
+      background: #e6f2ff;
+    }
 
-    .button-row {
+    .pill.final {
+      color: white;
+      background: linear-gradient(90deg, var(--red), var(--purple), var(--blue));
+    }
+
+    .time {
+      text-align: right;
+      color: #173f85;
+      font-weight: 1000;
+      line-height: 1.35;
+    }
+
+    .match h3 {
+      font-size: 28px;
+      line-height: 1.12;
+      margin-bottom: 10px;
+    }
+
+    .btn-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 18px;
+      margin-bottom: 16px;
     }
 
-    button,
-    .btn {
+    button.ui,
+    a.ui {
       border: 0;
       cursor: pointer;
       display: inline-flex;
@@ -419,48 +531,41 @@
       border-radius: 999px;
       background: var(--black);
       color: white;
-      font-weight: 950;
       font-size: 14px;
-      transition: transform 0.16s ease, opacity 0.16s ease;
+      font-weight: 950;
+      transition: 0.15s ease;
     }
 
-    button:hover,
-    .btn:hover {
-      transform: translateY(-2px);
+    button.ui:hover,
+    a.ui:hover {
+      transform: translateY(-1px);
       opacity: 0.9;
     }
 
-    button.secondary,
-    .btn.secondary {
-      background: var(--paper);
+    button.ui.secondary,
+    a.ui.secondary {
       color: var(--black);
+      background: white;
       border: 1px solid var(--line);
     }
 
-    button.active {
-      background: linear-gradient(90deg, var(--red), var(--purple), var(--blue));
+    button.ui.active {
       color: white;
+      background: linear-gradient(90deg, var(--red), var(--purple), var(--blue));
     }
 
-    .hidden-panel {
+    .sub-panel {
       display: none;
-      margin-top: 18px;
     }
 
-    .hidden-panel.active {
+    .sub-panel.active {
       display: block;
-      animation: fadeIn 0.18s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+      animation: pop 0.16s ease;
     }
 
     .table-card {
-      overflow: hidden;
       padding: 0;
-      background: var(--paper);
+      overflow: hidden;
     }
 
     table {
@@ -477,11 +582,12 @@
     }
 
     th {
-      background: var(--black);
       color: white;
+      background: var(--black);
       font-size: 12px;
       letter-spacing: 0.06em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     tr:last-child td {
@@ -493,31 +599,8 @@
       line-height: 1.35;
     }
 
-    .status {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 5px 9px;
-      border-radius: 999px;
-      background: #efeee8;
-      color: var(--ink);
-      font-size: 12px;
-      font-weight: 950;
-      white-space: nowrap;
-    }
-
-    .status.korea {
-      background: #e6f2ff;
-      color: #173f85;
-    }
-
-    .status.final {
-      background: #1a1a1a;
-      color: white;
-    }
-
     .group-card {
-      padding: 18px;
+      padding: 17px;
       border-radius: 22px;
     }
 
@@ -554,35 +637,36 @@
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 14px;
-      margin-top: 18px;
+      margin-top: 16px;
     }
 
     .weather-item {
-      padding: 16px;
-      border-radius: 20px;
+      padding: 17px;
+      border-radius: 22px;
       background:
-        linear-gradient(135deg, rgba(57, 232, 210, 0.15), rgba(185, 255, 0, 0.13)),
-        var(--paper);
+        linear-gradient(135deg, rgba(56, 234, 213, 0.16), rgba(184, 255, 0, 0.13)),
+        white;
       border: 1px solid var(--line);
     }
 
     .weather-item span {
       display: block;
-      margin-bottom: 4px;
       color: var(--muted);
       font-size: 13px;
       font-weight: 900;
+      margin-bottom: 4px;
     }
 
     .weather-item strong {
-      font-size: 25px;
+      font-size: 28px;
+      line-height: 1;
       letter-spacing: -0.05em;
     }
 
     .search-form {
       display: flex;
       gap: 10px;
-      margin-top: 18px;
+      margin-top: 16px;
     }
 
     .search-form input {
@@ -591,7 +675,7 @@
       padding: 12px 15px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: var(--paper);
+      background: white;
       color: var(--ink);
       outline: none;
       font-weight: 800;
@@ -600,13 +684,13 @@
     .news-list {
       display: grid;
       gap: 12px;
-      margin-top: 16px;
+      margin-top: 14px;
     }
 
     .news-item {
       padding: 16px;
       border-radius: 20px;
-      background: #f6f4ee;
+      background: #f6f3ec;
       border: 1px solid var(--line);
     }
 
@@ -625,7 +709,7 @@
     .stat-number {
       margin: 8px 0;
       font-family: Impact, "Arial Black", sans-serif;
-      font-size: 46px;
+      font-size: 48px;
       line-height: 1;
       letter-spacing: -0.04em;
     }
@@ -633,16 +717,16 @@
     .bar {
       height: 10px;
       margin-top: 18px;
-      background: #e6e4dd;
+      background: #e6e1d6;
       border-radius: 999px;
       overflow: hidden;
     }
 
     .bar div {
-      width: var(--value);
       height: 100%;
-      background: linear-gradient(90deg, var(--blue), var(--mint), var(--lime), var(--orange), var(--red));
+      width: var(--value);
       border-radius: inherit;
+      background: linear-gradient(90deg, var(--blue), var(--mint), var(--lime), var(--orange), var(--red));
     }
 
     .source {
@@ -653,15 +737,46 @@
       font-weight: 950;
     }
 
-    footer {
-      padding: 34px 22px 44px;
-      background: var(--black);
-      color: rgba(247, 242, 232, 0.76);
-      text-align: center;
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
     }
 
     @media (max-width: 980px) {
-      .hero {
+      body {
+        overflow: auto;
+      }
+
+      .app {
+        min-height: 100vh;
+        height: auto;
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        min-height: auto;
+      }
+
+      .brand {
+        min-height: 132px;
+      }
+
+      .menu {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .desktop {
+        min-height: 760px;
+      }
+
+      .window {
+        inset: 0;
+        min-height: 760px;
+      }
+
+      .headline {
         grid-template-columns: 1fr;
       }
 
@@ -671,41 +786,60 @@
         grid-template-columns: 1fr;
       }
 
+      .weather-box {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .section-title {
-        align-items: flex-start;
+        align-items: start;
         flex-direction: column;
       }
 
       .section-title p {
         text-align: left;
       }
-
-      .weather-box {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-      }
     }
 
     @media (max-width: 620px) {
-      .hero-main {
-        min-height: 440px;
-        padding: 30px;
+      .app {
+        padding: 10px;
       }
 
-      .hero-main::before {
-        right: -35px;
+      .menu {
+        grid-template-columns: 1fr;
+      }
+
+      .desktop {
+        border-radius: 24px;
+      }
+
+      .window {
+        border-radius: 24px;
+      }
+
+      .titlebar {
+        padding: 0 14px;
+      }
+
+      .window-body {
+        padding: 16px;
+      }
+
+      .headline-main {
+        min-height: 300px;
+        padding: 22px;
+      }
+
+      .headline-main::before {
+        right: 18px;
         top: 18px;
-        font-size: 205px;
+        width: 110px;
+        height: 110px;
+        font-size: 70px;
       }
 
-      th,
-      td {
-        padding: 12px 10px;
-        font-size: 13px;
+      .headline-main h2 {
+        font-size: 42px;
       }
 
       .weather-box {
@@ -716,278 +850,339 @@
         flex-direction: column;
       }
 
-      .match-top {
-        flex-direction: column;
+      th,
+      td {
+        padding: 12px 10px;
+        font-size: 13px;
       }
 
-      .match-time {
+      .time {
         text-align: left;
+      }
+
+      .match-top {
+        flex-direction: column;
       }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <nav class="nav">
-      <a href="#top" class="brand" aria-label="홈으로 이동">
-        <span class="brand-mark">26</span>
-        <span>사회복지실무역량</span>
-      </a>
-      <div class="nav-links">
-        <a href="#korea">대한민국 일정</a>
-        <a href="#more">전체 일정</a>
-        <a href="#weather">부산 날씨</a>
-        <a href="#busan">부산 이슈</a>
-        <a href="#pknu">부경대 뉴스</a>
-        <a href="#welfare">복지 통계</a>
+  <div class="app">
+    <aside class="sidebar">
+      <section class="brand">
+        <span class="brand-badge">FIFA WORLD CUP</span>
+        <span class="big26">26</span>
+        <h1>사회복지<br />실무역량</h1>
+      </section>
+
+      <nav class="menu" aria-label="페이지 메뉴">
+        <button type="button" class="nav-btn active" onclick="openWindow('koreaWindow', this)">대한민국 일정</button>
+        <button type="button" class="nav-btn" onclick="openWindow('scheduleWindow', this)">전체 일정</button>
+        <button type="button" class="nav-btn" onclick="openWindow('weatherWindow', this)">부산 날씨</button>
+        <button type="button" class="nav-btn" onclick="openWindow('busanWindow', this)">부산 이슈</button>
+        <button type="button" class="nav-btn" onclick="openWindow('pknuWindow', this)">부경대 뉴스</button>
+        <button type="button" class="nav-btn" onclick="openWindow('welfareWindow', this)">복지 통계</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        GitHub Pages용 단일 파일 홈페이지<br />
+        파일명: index.html
       </div>
-    </nav>
-  </header>
-
-  <div id="top" class="hero">
-    <section class="hero-main">
-      <div class="hero-content">
-        <div class="eyebrow">FIFA WORLD CUP 26</div>
-        <h1>대한민국<br />월드컵 일정</h1>
-        <p>
-          2026 FIFA 월드컵 대한민국 조별리그 일정과 부산 생활 정보, 부경대 뉴스, 사회복지 관련 통계를 확인할 수 있는 정보 페이지입니다.
-        </p>
-        <div class="button-row">
-          <a class="btn" href="#korea">대한민국 경기 보기</a>
-          <a class="btn secondary" href="#more">다른 일정 보기</a>
-        </div>
-      </div>
-    </section>
-
-    <aside id="korea" class="korea-panel">
-      <article class="panel-title">
-        <small>GROUP A · KOREA REPUBLIC</small>
-        <strong>대한민국 조별리그</strong>
-      </article>
-
-      <article class="match-card">
-        <div class="match-top">
-          <span class="match-no">M2</span>
-          <div class="match-time">2026.06.12 금<br />오전 11:00 KST</div>
-        </div>
-        <h3>대한민국 vs 체코</h3>
-        <p>Guadalajara Stadium · 과달라하라</p>
-      </article>
-
-      <article class="match-card">
-        <div class="match-top">
-          <span class="match-no">M28</span>
-          <div class="match-time">2026.06.19 금<br />오전 10:00 KST</div>
-        </div>
-        <h3>멕시코 vs 대한민국</h3>
-        <p>Guadalajara Stadium · 과달라하라</p>
-      </article>
-
-      <article class="match-card">
-        <div class="match-top">
-          <span class="match-no">M54</span>
-          <div class="match-time">2026.06.25 목<br />오전 10:00 KST</div>
-        </div>
-        <h3>남아공 vs 대한민국</h3>
-        <p>Monterrey Stadium · 몬테레이</p>
-      </article>
     </aside>
+
+    <main class="desktop">
+      <section id="koreaWindow" class="window active">
+        <div class="titlebar">
+          <div class="traffic">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="window-name">대한민국 조별리그 일정</div>
+          <div class="window-badge">GROUP A</div>
+        </div>
+
+        <div class="window-body">
+          <div class="headline">
+            <article class="headline-main">
+              <h2>대한민국<br />월드컵 일정</h2>
+              <p>2026 FIFA 월드컵 대한민국 조별리그 3경기</p>
+            </article>
+
+            <aside class="headline-side">
+              <div class="mini-stat">
+                <small>Group</small>
+                <strong>A</strong>
+              </div>
+              <div class="mini-stat">
+                <small>Matches</small>
+                <strong>3</strong>
+              </div>
+              <div class="mini-stat">
+                <small>Kick-off</small>
+                <strong>KST</strong>
+              </div>
+            </aside>
+          </div>
+
+          <div class="grid grid-3">
+            <article class="card match">
+              <div class="match-top">
+                <span class="pill">MATCH 2</span>
+                <div class="time">2026.06.12 금<br />오전 11:00</div>
+              </div>
+              <div class="match-bottom">
+                <h3>대한민국 vs 체코</h3>
+                <p>Guadalajara Stadium<br />과달라하라</p>
+              </div>
+            </article>
+
+            <article class="card match">
+              <div class="match-top">
+                <span class="pill">MATCH 28</span>
+                <div class="time">2026.06.19 금<br />오전 10:00</div>
+              </div>
+              <div class="match-bottom">
+                <h3>멕시코 vs 대한민국</h3>
+                <p>Guadalajara Stadium<br />과달라하라</p>
+              </div>
+            </article>
+
+            <article class="card match">
+              <div class="match-top">
+                <span class="pill">MATCH 54</span>
+                <div class="time">2026.06.25 목<br />오전 10:00</div>
+              </div>
+              <div class="match-bottom">
+                <h3>남아공 vs 대한민국</h3>
+                <p>Monterrey Stadium<br />몬테레이</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="section-title">
+            <h2>대회 요약</h2>
+            <p>2026 FIFA World Cup</p>
+          </div>
+
+          <div class="grid grid-4">
+            <article class="card">
+              <h3>개최국</h3>
+              <div class="stat-number">3</div>
+              <p>캐나다 · 멕시코 · 미국</p>
+            </article>
+            <article class="card">
+              <h3>참가팀</h3>
+              <div class="stat-number">48</div>
+              <p>48개국 본선 체제</p>
+            </article>
+            <article class="card">
+              <h3>조 편성</h3>
+              <div class="stat-number">12</div>
+              <p>12개 조 조별리그</p>
+            </article>
+            <article class="card">
+              <h3>전체 경기</h3>
+              <div class="stat-number">104</div>
+              <p>개막전부터 결승까지</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="scheduleWindow" class="window">
+        <div class="titlebar">
+          <div class="traffic">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="window-name">전체 일정</div>
+          <div class="window-badge">BUTTON VIEW</div>
+        </div>
+
+        <div class="window-body">
+          <div class="section-title">
+            <h2>전체 일정</h2>
+            <p>버튼을 누르면 해당 일정이 표시됩니다.</p>
+          </div>
+
+          <div class="btn-row">
+            <button type="button" class="ui sub-btn active" onclick="openSubPanel('groupsPanel', this)">조 편성</button>
+            <button type="button" class="ui sub-btn" onclick="openSubPanel('phasePanel', this)">토너먼트</button>
+            <button type="button" class="ui sub-btn" onclick="openSubPanel('featuredPanel', this)">주요 경기</button>
+            <a class="ui secondary" href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures" target="_blank" rel="noopener">FIFA 공식 일정</a>
+          </div>
+
+          <div id="groupsPanel" class="sub-panel active">
+            <div id="groupGrid" class="grid grid-4"></div>
+          </div>
+
+          <div id="phasePanel" class="sub-panel">
+            <article class="card table-card">
+              <table>
+                <thead>
+                  <tr>
+                    <th>단계</th>
+                    <th>기간</th>
+                    <th>내용</th>
+                    <th>비고</th>
+                  </tr>
+                </thead>
+                <tbody id="phaseScheduleBody"></tbody>
+              </table>
+            </article>
+          </div>
+
+          <div id="featuredPanel" class="sub-panel">
+            <article class="card table-card">
+              <table>
+                <thead>
+                  <tr>
+                    <th>번호</th>
+                    <th>날짜</th>
+                    <th>경기</th>
+                    <th>장소</th>
+                    <th>구분</th>
+                  </tr>
+                </thead>
+                <tbody id="featuredScheduleBody"></tbody>
+              </table>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="weatherWindow" class="window">
+        <div class="titlebar">
+          <div class="traffic">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="window-name">부산 현재 날씨</div>
+          <div class="window-badge">BUSAN</div>
+        </div>
+
+        <div class="window-body">
+          <section class="card">
+            <h3 id="weatherTitle">날씨 정보를 불러오는 중...</h3>
+            <p id="weatherDesc">인터넷 연결 상태에 따라 몇 초 정도 걸릴 수 있습니다.</p>
+            <div class="weather-box">
+              <div class="weather-item">
+                <span>현재 기온</span>
+                <strong id="temp">-</strong>
+              </div>
+              <div class="weather-item">
+                <span>습도</span>
+                <strong id="humidity">-</strong>
+              </div>
+              <div class="weather-item">
+                <span>강수량</span>
+                <strong id="rain">-</strong>
+              </div>
+              <div class="weather-item">
+                <span>풍속</span>
+                <strong id="wind">-</strong>
+              </div>
+            </div>
+            <div class="btn-row" style="margin-top:16px;margin-bottom:0;">
+              <button class="ui" type="button" onclick="loadWeather()">날씨 새로고침</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="busanWindow" class="window">
+        <div class="titlebar">
+          <div class="traffic">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="window-name">부산의 이슈</div>
+          <div class="window-badge">NEWS</div>
+        </div>
+
+        <div class="window-body">
+          <div class="grid grid-2">
+            <article class="card">
+              <h3>부산 이슈 검색</h3>
+              <p>키워드를 입력하면 네이버 뉴스 검색 결과로 이동합니다.</p>
+              <form class="search-form" onsubmit="searchNews(event, 'busan')">
+                <input id="busanKeyword" type="text" value="부산 고령화 지역사회복지" aria-label="부산 이슈 검색어" />
+                <button class="ui" type="submit">검색</button>
+              </form>
+              <div class="btn-row" style="margin-top:16px;margin-bottom:0;">
+                <a class="ui secondary" href="https://www.busan.go.kr/news" target="_blank" rel="noopener">부산시보</a>
+                <a class="ui secondary" href="https://www.busan.go.kr/nbnews" target="_blank" rel="noopener">부산 통합 공지사항</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <h3>지역 이슈 요약</h3>
+              <div class="news-list" id="busanIssues"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="pknuWindow" class="window">
+        <div class="titlebar">
+          <div class="traffic">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="window-name">부경대 뉴스</div>
+          <div class="window-badge">PKNU</div>
+        </div>
+
+        <div class="window-body">
+          <div class="grid grid-2">
+            <article class="card">
+              <h3>부경대 뉴스 검색</h3>
+              <p>키워드를 입력하면 네이버 뉴스 검색 결과로 이동합니다.</p>
+              <form class="search-form" onsubmit="searchNews(event, 'pknu')">
+                <input id="pknuKeyword" type="text" value="부경대학교 사회복지 지역사회" aria-label="부경대 뉴스 검색어" />
+                <button class="ui" type="submit">검색</button>
+              </form>
+              <div class="btn-row" style="margin-top:16px;margin-bottom:0;">
+                <a class="ui secondary" href="https://www.pknu.ac.kr/main" target="_blank" rel="noopener">부경대 공식 홈페이지</a>
+                <a class="ui secondary" href="https://www.pknu.ac.kr/main/163" target="_blank" rel="noopener">부경대 공지사항</a>
+                <a class="ui secondary" href="https://press.pknu.ac.kr/" target="_blank" rel="noopener">부경언론사</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <h3>학교 소식 요약</h3>
+              <div class="news-list" id="pknuNews"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="welfareWindow" class="window">
+        <div class="titlebar">
+          <div class="traffic">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="window-name">사회복지 관련 통계</div>
+          <div class="window-badge">STATS</div>
+        </div>
+
+        <div class="window-body">
+          <div class="grid grid-3" id="welfareStats"></div>
+          <p class="footer-note">
+            수업 과제용 비공식 정보 페이지입니다. FIFA, 부산시, 부경대학교의 공식 홈페이지가 아닙니다.
+          </p>
+        </div>
+      </section>
+    </main>
   </div>
-
-  <main>
-    <section id="summary">
-      <div class="section-title">
-        <h2>WORLD CUP 2026</h2>
-        <p>대회 핵심 정보</p>
-      </div>
-
-      <div class="grid grid-4">
-        <article class="card summary-card">
-          <h3>개최국</h3>
-          <div class="summary-number">3</div>
-          <p>캐나다 · 멕시코 · 미국</p>
-        </article>
-
-        <article class="card summary-card">
-          <h3>참가팀</h3>
-          <div class="summary-number">48</div>
-          <p>48개국 본선 체제</p>
-        </article>
-
-        <article class="card summary-card">
-          <h3>조 편성</h3>
-          <div class="summary-number">12</div>
-          <p>12개 조 · 조별리그</p>
-        </article>
-
-        <article class="card summary-card">
-          <h3>전체 경기</h3>
-          <div class="summary-number">104</div>
-          <p>개막전부터 결승까지</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="more">
-      <div class="section-title">
-        <h2>다른 일정 보기</h2>
-        <p>버튼을 누르면 해당 정보가 아래에 표시됩니다.</p>
-      </div>
-
-      <article class="card">
-        <h3>일정 메뉴</h3>
-        <p>대한민국 경기 외의 정보는 필요한 경우에만 펼쳐서 볼 수 있습니다.</p>
-        <div class="button-row">
-          <button type="button" class="schedule-btn" onclick="showPanel('groupsPanel', this)">조 편성</button>
-          <button type="button" class="schedule-btn" onclick="showPanel('phasePanel', this)">토너먼트 일정</button>
-          <button type="button" class="schedule-btn" onclick="showPanel('featuredPanel', this)">주요 경기</button>
-          <a class="btn secondary" href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures" target="_blank" rel="noopener">FIFA 공식 일정</a>
-        </div>
-      </article>
-
-      <div id="groupsPanel" class="hidden-panel">
-        <div id="groupGrid" class="grid grid-4"></div>
-      </div>
-
-      <div id="phasePanel" class="hidden-panel">
-        <article class="card table-card">
-          <table>
-            <thead>
-              <tr>
-                <th>대회 단계</th>
-                <th>기간</th>
-                <th>내용</th>
-                <th>비고</th>
-              </tr>
-            </thead>
-            <tbody id="phaseScheduleBody"></tbody>
-          </table>
-        </article>
-      </div>
-
-      <div id="featuredPanel" class="hidden-panel">
-        <article class="card table-card">
-          <table>
-            <thead>
-              <tr>
-                <th>번호</th>
-                <th>날짜</th>
-                <th>경기</th>
-                <th>장소</th>
-                <th>구분</th>
-              </tr>
-            </thead>
-            <tbody id="featuredScheduleBody"></tbody>
-          </table>
-        </article>
-      </div>
-    </section>
-
-    <section id="weather">
-      <div class="section-title">
-        <h2>부산 현재 날씨</h2>
-        <p>현재 기온, 습도, 강수량, 풍속</p>
-      </div>
-
-      <article class="card">
-        <h3 id="weatherTitle">날씨 정보를 불러오는 중...</h3>
-        <p id="weatherDesc">인터넷 연결 상태에 따라 몇 초 정도 걸릴 수 있습니다.</p>
-        <div class="weather-box">
-          <div class="weather-item">
-            <span>현재 기온</span>
-            <strong id="temp">-</strong>
-          </div>
-          <div class="weather-item">
-            <span>습도</span>
-            <strong id="humidity">-</strong>
-          </div>
-          <div class="weather-item">
-            <span>강수량</span>
-            <strong id="rain">-</strong>
-          </div>
-          <div class="weather-item">
-            <span>풍속</span>
-            <strong id="wind">-</strong>
-          </div>
-        </div>
-        <div class="button-row">
-          <button type="button" onclick="loadWeather()">날씨 새로고침</button>
-        </div>
-      </article>
-    </section>
-
-    <section id="busan">
-      <div class="section-title">
-        <h2>부산의 이슈</h2>
-        <p>뉴스 검색 및 공식 소식 링크</p>
-      </div>
-
-      <div class="grid grid-2">
-        <article class="card">
-          <h3>부산 이슈 검색</h3>
-          <p>키워드를 입력하면 네이버 뉴스 검색 결과로 이동합니다.</p>
-          <form class="search-form" onsubmit="searchNews(event, 'busan')">
-            <input id="busanKeyword" type="text" value="부산 고령화 지역사회복지" aria-label="부산 이슈 검색어" />
-            <button type="submit">검색</button>
-          </form>
-          <div class="button-row">
-            <a class="btn secondary" href="https://www.busan.go.kr/news" target="_blank" rel="noopener">부산시보</a>
-            <a class="btn secondary" href="https://www.busan.go.kr/nbnews" target="_blank" rel="noopener">부산 통합 공지사항</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>지역 이슈 요약</h3>
-          <div class="news-list" id="busanIssues"></div>
-        </article>
-      </div>
-    </section>
-
-    <section id="pknu">
-      <div class="section-title">
-        <h2>부경대 뉴스</h2>
-        <p>학교 소식 검색 및 공식 링크</p>
-      </div>
-
-      <div class="grid grid-2">
-        <article class="card">
-          <h3>부경대 뉴스 검색</h3>
-          <p>키워드를 입력하면 네이버 뉴스 검색 결과로 이동합니다.</p>
-          <form class="search-form" onsubmit="searchNews(event, 'pknu')">
-            <input id="pknuKeyword" type="text" value="부경대학교 사회복지 지역사회" aria-label="부경대 뉴스 검색어" />
-            <button type="submit">검색</button>
-          </form>
-          <div class="button-row">
-            <a class="btn secondary" href="https://www.pknu.ac.kr/main" target="_blank" rel="noopener">부경대 공식 홈페이지</a>
-            <a class="btn secondary" href="https://www.pknu.ac.kr/main/163" target="_blank" rel="noopener">부경대 공지사항</a>
-            <a class="btn secondary" href="https://press.pknu.ac.kr/" target="_blank" rel="noopener">부경언론사</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>학교 소식 요약</h3>
-          <div class="news-list" id="pknuNews"></div>
-        </article>
-      </div>
-    </section>
-
-    <section id="welfare">
-      <div class="section-title">
-        <h2>사회복지 관련 통계</h2>
-        <p>기본 통계 카드</p>
-      </div>
-
-      <div class="grid grid-3" id="welfareStats"></div>
-    </section>
-  </main>
-
-  <footer>
-    <p>
-      © 2026 사회복지실무역량. 수업 과제용 비공식 정보 페이지입니다.
-      FIFA, 부산시, 부경대학교의 공식 홈페이지가 아닙니다.
-    </p>
-  </footer>
 
   <script>
     const groups = [
@@ -1090,24 +1285,20 @@
       }
     ];
 
-    function showPanel(panelId, button) {
-      const panels = document.querySelectorAll(".hidden-panel");
-      const buttons = document.querySelectorAll(".schedule-btn");
+    function openWindow(windowId, button) {
+      document.querySelectorAll(".window").forEach(window => window.classList.remove("active"));
+      document.getElementById(windowId).classList.add("active");
 
-      panels.forEach(panel => {
-        if (panel.id === panelId) {
-          panel.classList.toggle("active");
-        } else {
-          panel.classList.remove("active");
-        }
-      });
+      document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+    }
 
-      buttons.forEach(btn => btn.classList.remove("active"));
+    function openSubPanel(panelId, button) {
+      document.querySelectorAll(".sub-panel").forEach(panel => panel.classList.remove("active"));
+      document.getElementById(panelId).classList.add("active");
 
-      const selectedPanel = document.getElementById(panelId);
-      if (selectedPanel.classList.contains("active")) {
-        button.classList.add("active");
-      }
+      document.querySelectorAll(".sub-btn").forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
     }
 
     function renderGroups() {
@@ -1132,7 +1323,7 @@
           <td><strong>${item.phase}</strong></td>
           <td>${item.date}</td>
           <td>${item.desc}</td>
-          <td><span class="status ${item.phase === "결승" ? "final" : ""}">${item.note}</span></td>
+          <td><span class="pill ${item.phase === "결승" ? "final" : ""}">${item.note}</span></td>
         </tr>
       `).join("");
     }
@@ -1141,7 +1332,7 @@
       const body = document.getElementById("featuredScheduleBody");
       body.innerHTML = featuredMatches.map(item => `
         <tr>
-          <td><span class="status ${item.type === "결승" ? "final" : ""}">${item.no}</span></td>
+          <td><span class="pill ${item.type === "결승" ? "final" : ""}">${item.no}</span></td>
           <td>${item.date}</td>
           <td><strong>${item.match}</strong></td>
           <td>${item.venue}</td>
