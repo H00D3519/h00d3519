@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>사회복지실무역량 | 2026 월드컵 & 지역정보 대시보드</title>
+  <title>사회복지실무역량 | 2026 월드컵 정보</title>
   <style>
     :root {
-      --grass: #0e5a3f;
-      --grass-dark: #073623;
-      --grass-soft: #167a52;
-      --cream: #fff6df;
-      --paper: #f7ead0;
-      --ink: #111511;
-      --muted: #6a624f;
-      --gold: #d8a932;
-      --line: rgba(17, 21, 17, 0.14);
-      --red: #c9222c;
-      --blue: #1f5fab;
-      --green: #11824c;
-      --white: #fffdf5;
-      --shadow: 0 20px 60px rgba(3, 24, 15, 0.28);
-      --radius: 24px;
+      --black: #050505;
+      --ink: #121212;
+      --paper: #ffffff;
+      --cream: #f7f2e8;
+      --muted: #67645d;
+      --line: rgba(5, 5, 5, 0.13);
+      --red: #ef1b18;
+      --orange: #ff5a19;
+      --blue: #2d48ff;
+      --purple: #6a19ff;
+      --mint: #39e8d2;
+      --green: #00b957;
+      --lime: #b9ff00;
+      --gold: #d8a934;
+      --radius: 28px;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.20);
     }
 
     * {
@@ -30,13 +31,14 @@
 
     body {
       margin: 0;
-      font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif;
       color: var(--ink);
+      font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
       line-height: 1.65;
       background:
-        radial-gradient(circle at 12% 8%, rgba(216, 169, 50, 0.28), transparent 24%),
-        radial-gradient(circle at 88% 0%, rgba(31, 95, 171, 0.18), transparent 28%),
-        linear-gradient(135deg, #f7ead0 0%, #fff8e8 52%, #edf4e6 100%);
+        radial-gradient(circle at 3% 3%, rgba(57, 232, 210, 0.24), transparent 23%),
+        radial-gradient(circle at 96% 2%, rgba(106, 25, 255, 0.20), transparent 25%),
+        radial-gradient(circle at 78% 98%, rgba(185, 255, 0, 0.21), transparent 28%),
+        var(--cream);
     }
 
     a {
@@ -47,233 +49,282 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
-      backdrop-filter: blur(16px);
-      background: rgba(255, 248, 232, 0.84);
-      border-bottom: 1px solid rgba(17, 21, 17, 0.12);
+      z-index: 50;
+      background: rgba(247, 242, 232, 0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
     }
 
     .nav {
-      max-width: 1180px;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 16px 22px;
+      padding: 15px 22px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 18px;
     }
 
-    .logo {
+    .brand {
       display: flex;
       align-items: center;
-      gap: 11px;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      color: var(--grass-dark);
+      gap: 12px;
+      font-weight: 950;
+      letter-spacing: -0.055em;
+      font-size: 18px;
     }
 
-    .logo-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
       display: grid;
       place-items: center;
+      color: white;
+      font-weight: 950;
       background:
-        radial-gradient(circle at 50% 50%, var(--white) 0 27%, transparent 28%),
-        conic-gradient(from 45deg, var(--red), var(--gold), var(--green), var(--blue), var(--red));
-      box-shadow: 0 10px 24px rgba(14, 90, 63, 0.28);
-      color: var(--grass-dark);
-      font-size: 12px;
-      border: 2px solid var(--cream);
+        linear-gradient(135deg, transparent 0 28%, rgba(255, 255, 255, 0.18) 28% 38%, transparent 38%),
+        conic-gradient(from 20deg, var(--red), var(--purple), var(--blue), var(--mint), var(--lime), var(--orange), var(--red));
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
     }
 
     .nav-links {
       display: flex;
-      gap: 13px;
       flex-wrap: wrap;
-      font-size: 14px;
-      color: #384437;
-      font-weight: 700;
+      gap: 10px;
+      color: #3c3b37;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .nav-links a {
+      padding: 7px 9px;
+      border-radius: 999px;
     }
 
     .nav-links a:hover {
-      color: var(--red);
+      background: var(--black);
+      color: white;
     }
 
     .hero {
-      max-width: 1180px;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 62px 22px 34px;
+      padding: 54px 22px 34px;
       display: grid;
-      grid-template-columns: minmax(0, 1.24fr) minmax(300px, 0.76fr);
-      gap: 26px;
+      grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+      gap: 22px;
       align-items: stretch;
     }
 
     .hero-main {
       position: relative;
+      min-height: 520px;
       overflow: hidden;
-      min-height: 420px;
-      padding: 46px;
-      border-radius: calc(var(--radius) + 12px);
-      background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 49.5%, rgba(255, 255, 255, 0.34) 50%, rgba(255, 255, 255, 0.08) 50.5%),
-        linear-gradient(0deg, transparent 47%, rgba(255, 255, 255, 0.18) 47.4%, rgba(255, 255, 255, 0.18) 52.6%, transparent 53%),
-        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.07) 0 80px, rgba(255, 255, 255, 0.02) 80px 160px),
-        linear-gradient(135deg, #0e5a3f, #073623);
+      border-radius: 40px;
+      background: var(--black);
       color: var(--cream);
       box-shadow: var(--shadow);
+      padding: 48px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      align-items: flex-end;
     }
 
     .hero-main::before {
-      content: "";
+      content: "26";
       position: absolute;
-      width: 300px;
-      height: 300px;
-      border: 3px solid rgba(255, 255, 255, 0.22);
-      border-radius: 50%;
-      right: -74px;
-      top: 50%;
-      transform: translateY(-50%);
+      right: -48px;
+      top: -52px;
+      font-size: clamp(190px, 34vw, 420px);
+      line-height: 0.78;
+      font-weight: 1000;
+      letter-spacing: -0.18em;
+      color: white;
+      opacity: 0.98;
+      font-family: Impact, "Arial Black", sans-serif;
     }
 
     .hero-main::after {
       content: "";
       position: absolute;
-      inset: 20px;
-      border: 2px solid rgba(255, 255, 255, 0.20);
-      border-radius: calc(var(--radius) + 2px);
+      inset: 0;
+      background:
+        radial-gradient(circle at 74% 22%, rgba(216, 169, 52, 0.75), transparent 10%),
+        repeating-radial-gradient(circle at 84% 46%, rgba(239, 27, 24, 0.82) 0 22px, rgba(106, 25, 255, 0.82) 22px 44px, rgba(45, 72, 255, 0.82) 44px 66px, rgba(57, 232, 210, 0.82) 66px 88px, rgba(185, 255, 0, 0.82) 88px 110px),
+        linear-gradient(135deg, transparent 0 48%, rgba(255, 255, 255, 0.12) 48% 52%, transparent 52%);
+      mix-blend-mode: screen;
+      opacity: 0.43;
       pointer-events: none;
     }
 
     .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      max-width: 660px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
+      gap: 8px;
+      margin-bottom: 18px;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(255, 246, 223, 0.12);
-      border: 1px solid rgba(255, 246, 223, 0.26);
-      color: #ffe4a0;
-      font-weight: 900;
-      letter-spacing: 0.08em;
+      background: white;
+      color: var(--black);
       font-size: 13px;
-      text-transform: uppercase;
+      font-weight: 1000;
+      letter-spacing: 0.06em;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(38px, 6.6vw, 76px);
-      line-height: 0.95;
-      letter-spacing: -0.08em;
+      font-family: Impact, "Arial Black", "Noto Sans KR", sans-serif;
+      font-size: clamp(44px, 7.4vw, 92px);
+      line-height: 0.92;
+      letter-spacing: -0.075em;
     }
 
-    .hero-main p {
-      max-width: 740px;
-      margin: 24px 0 0;
-      color: rgba(255, 246, 223, 0.92);
+    .hero-content p {
+      margin: 22px 0 0;
+      max-width: 640px;
+      color: rgba(247, 242, 232, 0.88);
       font-size: 18px;
+      font-weight: 650;
     }
 
-    .hero-side {
+    .korea-panel {
       display: grid;
       gap: 16px;
     }
 
-    .ticket {
+    .panel-title {
+      padding: 24px;
+      border-radius: var(--radius);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 15px 42px rgba(0, 0, 0, 0.10);
+    }
+
+    .panel-title small {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-weight: 1000;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .panel-title strong {
+      display: block;
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 48px;
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+
+    .match-card {
       position: relative;
       overflow: hidden;
-      padding: 26px;
+      padding: 22px;
       border-radius: var(--radius);
-      background: var(--white);
-      border: 1px solid rgba(17, 21, 17, 0.12);
-      box-shadow: 0 16px 38px rgba(3, 24, 15, 0.12);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 15px 42px rgba(0, 0, 0, 0.10);
     }
 
-    .ticket::before,
-    .ticket::after {
+    .match-card::after {
       content: "";
       position: absolute;
-      right: 62px;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: #f7ead0;
-      border: 1px solid rgba(17, 21, 17, 0.08);
+      right: -36px;
+      bottom: -42px;
+      width: 128px;
+      height: 128px;
+      border-radius: 36px;
+      background: conic-gradient(from 90deg, var(--red), var(--purple), var(--blue), var(--mint), var(--lime), var(--orange), var(--red));
+      opacity: 0.72;
+      transform: rotate(18deg);
     }
 
-    .ticket::before {
-      top: -18px;
+    .match-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: start;
+      margin-bottom: 12px;
     }
 
-    .ticket::after {
-      bottom: -18px;
+    .match-no {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 48px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--black);
+      color: white;
+      font-weight: 1000;
+      font-size: 13px;
     }
 
-    .ticket small {
-      display: block;
+    .match-time {
+      text-align: right;
+      font-weight: 950;
+      color: #173f85;
+    }
+
+    .match-card h3 {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 8px;
+      font-size: 22px;
+      line-height: 1.25;
+      letter-spacing: -0.04em;
+    }
+
+    .match-card p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
       color: var(--muted);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .ticket strong {
-      display: block;
-      margin-top: 8px;
-      font-size: 34px;
-      line-height: 1;
-      letter-spacing: -0.05em;
-      color: var(--grass-dark);
-    }
-
-    .ticket span {
-      display: block;
-      margin-top: 10px;
-      color: var(--muted);
+      font-weight: 750;
     }
 
     main {
-      max-width: 1180px;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 0 22px 84px;
+      padding: 0 22px 88px;
     }
 
     section {
-      margin-top: 40px;
+      margin-top: 42px;
     }
 
     .section-title {
+      margin-bottom: 18px;
       display: flex;
+      align-items: flex-end;
       justify-content: space-between;
       gap: 18px;
-      align-items: flex-end;
-      margin-bottom: 16px;
     }
 
     .section-title h2 {
       margin: 0;
-      font-size: 30px;
-      line-height: 1.18;
-      letter-spacing: -0.055em;
-      color: var(--grass-dark);
+      font-family: Impact, "Arial Black", "Noto Sans KR", sans-serif;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
     }
 
     .section-title p {
       margin: 0;
-      max-width: 660px;
-      text-align: right;
+      max-width: 650px;
       color: var(--muted);
+      text-align: right;
       font-size: 14px;
+      font-weight: 750;
     }
 
     .grid {
@@ -289,11 +340,15 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
+    .grid-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
     .card {
-      border: 1px solid rgba(17, 21, 17, 0.12);
+      border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255, 253, 245, 0.88);
-      box-shadow: 0 14px 40px rgba(3, 24, 15, 0.10);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 14px 42px rgba(0, 0, 0, 0.08);
       padding: 24px;
     }
 
@@ -301,67 +356,111 @@
       margin: 0 0 10px;
       font-size: 20px;
       letter-spacing: -0.04em;
-      color: var(--grass-dark);
     }
 
     .card p {
       margin: 0;
       color: var(--muted);
+      font-weight: 650;
     }
 
-    .feature-card {
-      position: relative;
-      overflow: hidden;
-      min-height: 190px;
+    .summary-card {
+      min-height: 154px;
     }
 
-    .feature-card::after {
-      content: "";
-      position: absolute;
-      right: -36px;
-      bottom: -36px;
-      width: 122px;
-      height: 122px;
-      border-radius: 50%;
-      border: 18px solid rgba(14, 90, 63, 0.08);
+    .summary-number {
+      margin-top: 10px;
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 54px;
+      line-height: 1;
+      letter-spacing: -0.04em;
     }
 
     .tag-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 17px;
+      margin-top: 16px;
     }
 
     .tag {
-      padding: 6px 10px;
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
       border-radius: 999px;
-      background: rgba(14, 90, 63, 0.10);
-      border: 1px solid rgba(14, 90, 63, 0.18);
-      color: var(--grass-dark);
+      color: var(--black);
+      background: var(--cream);
+      border: 1px solid var(--line);
+      font-weight: 950;
       font-size: 13px;
-      font-weight: 900;
     }
 
-    .tag.red {
-      background: rgba(201, 34, 44, 0.10);
-      color: #8e1721;
+    .tag.black { color: white; background: var(--black); }
+    .tag.red { background: #ffe3e0; color: #9f1515; }
+    .tag.blue { background: #e5e8ff; color: #142999; }
+    .tag.green { background: #dfffe9; color: #006b32; }
+    .tag.gold { background: #fff0bf; color: #755408; }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
     }
 
-    .tag.blue {
-      background: rgba(31, 95, 171, 0.10);
-      color: #194a85;
+    button,
+    .btn {
+      border: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 15px;
+      border-radius: 999px;
+      background: var(--black);
+      color: white;
+      font-weight: 950;
+      font-size: 14px;
+      transition: transform 0.16s ease, opacity 0.16s ease;
     }
 
-    .tag.gold {
-      background: rgba(216, 169, 50, 0.17);
-      color: #76550c;
+    button:hover,
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
     }
 
-    .schedule {
+    button.secondary,
+    .btn.secondary {
+      background: var(--paper);
+      color: var(--black);
+      border: 1px solid var(--line);
+    }
+
+    button.active {
+      background: linear-gradient(90deg, var(--red), var(--purple), var(--blue));
+      color: white;
+    }
+
+    .hidden-panel {
+      display: none;
+      margin-top: 18px;
+    }
+
+    .hidden-panel.active {
+      display: block;
+      animation: fadeIn 0.18s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .table-card {
       overflow: hidden;
       padding: 0;
-      background: var(--white);
+      background: var(--paper);
     }
 
     table {
@@ -371,71 +470,84 @@
 
     th,
     td {
-      padding: 16px 18px;
-      border-bottom: 1px solid rgba(17, 21, 17, 0.10);
+      padding: 15px 16px;
+      border-bottom: 1px solid rgba(5, 5, 5, 0.10);
       text-align: left;
-      vertical-align: middle;
+      vertical-align: top;
     }
 
     th {
-      background: var(--grass-dark);
-      color: var(--cream);
-      font-size: 13px;
+      background: var(--black);
+      color: white;
+      font-size: 12px;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      letter-spacing: 0.07em;
     }
 
     tr:last-child td {
       border-bottom: 0;
     }
 
+    td strong {
+      display: block;
+      line-height: 1.35;
+    }
+
     .status {
-      display: inline-block;
-      padding: 5px 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 9px;
       border-radius: 999px;
-      background: rgba(14, 90, 63, 0.10);
-      color: var(--grass-dark);
-      font-size: 13px;
-      font-weight: 900;
+      background: #efeee8;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 950;
+      white-space: nowrap;
     }
 
-    .status.hot {
-      background: rgba(201, 34, 44, 0.12);
-      color: #8e1721;
+    .status.korea {
+      background: #e6f2ff;
+      color: #173f85;
     }
 
-    .button-row {
+    .status.final {
+      background: #1a1a1a;
+      color: white;
+    }
+
+    .group-card {
+      padding: 18px;
+      border-radius: 22px;
+    }
+
+    .group-title {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 18px;
+      margin-bottom: 10px;
+      font-weight: 1000;
     }
 
-    button,
-    .btn {
-      border: 0;
-      cursor: pointer;
-      padding: 11px 15px;
-      border-radius: 999px;
-      background: var(--grass-dark);
-      color: var(--cream);
-      font-weight: 900;
+    .group-title span {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--black);
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 20px;
+    }
+
+    .teams {
+      display: grid;
+      gap: 7px;
+      color: var(--muted);
+      font-weight: 850;
       font-size: 14px;
-      transition: transform 0.16s ease, opacity 0.16s ease;
-      box-shadow: 0 8px 18px rgba(7, 54, 35, 0.18);
-    }
-
-    button:hover,
-    .btn:hover {
-      transform: translateY(-2px);
-      opacity: 0.92;
-    }
-
-    .btn.secondary {
-      background: var(--white);
-      color: var(--grass-dark);
-      border: 1px solid rgba(17, 21, 17, 0.12);
-      box-shadow: none;
     }
 
     .weather-box {
@@ -447,25 +559,24 @@
 
     .weather-item {
       padding: 16px;
-      border-radius: 18px;
+      border-radius: 20px;
       background:
-        linear-gradient(135deg, rgba(14, 90, 63, 0.12), rgba(216, 169, 50, 0.12)),
-        var(--white);
-      border: 1px solid rgba(17, 21, 17, 0.10);
+        linear-gradient(135deg, rgba(57, 232, 210, 0.15), rgba(185, 255, 0, 0.13)),
+        var(--paper);
+      border: 1px solid var(--line);
     }
 
     .weather-item span {
       display: block;
+      margin-bottom: 4px;
       color: var(--muted);
       font-size: 13px;
-      margin-bottom: 4px;
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .weather-item strong {
-      font-size: 24px;
-      color: var(--grass-dark);
-      letter-spacing: -0.04em;
+      font-size: 25px;
+      letter-spacing: -0.05em;
     }
 
     .search-form {
@@ -477,13 +588,13 @@
     .search-form input {
       flex: 1;
       min-width: 0;
-      border: 1px solid rgba(17, 21, 17, 0.14);
-      border-radius: 999px;
-      background: var(--white);
-      color: var(--ink);
       padding: 12px 15px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--ink);
       outline: none;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .news-list {
@@ -494,94 +605,70 @@
 
     .news-item {
       padding: 16px;
-      border-radius: 18px;
-      background: rgba(14, 90, 63, 0.07);
-      border: 1px solid rgba(14, 90, 63, 0.12);
+      border-radius: 20px;
+      background: #f6f4ee;
+      border: 1px solid var(--line);
     }
 
     .news-item small {
-      display: block;
-      color: #8e1721;
-      font-weight: 900;
-      margin-bottom: 4px;
+      display: inline-flex;
+      margin-bottom: 6px;
+      color: #173f85;
+      font-weight: 1000;
     }
 
     .news-item strong {
       display: block;
       margin-bottom: 5px;
-      color: var(--grass-dark);
-    }
-
-    .stat-card {
-      position: relative;
-      overflow: hidden;
     }
 
     .stat-number {
-      margin: 8px 0 8px;
-      color: var(--grass-dark);
-      font-size: 34px;
-      font-weight: 950;
-      letter-spacing: -0.055em;
+      margin: 8px 0;
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 46px;
+      line-height: 1;
+      letter-spacing: -0.04em;
     }
 
     .bar {
       height: 10px;
       margin-top: 18px;
+      background: #e6e4dd;
       border-radius: 999px;
-      background: rgba(17, 21, 17, 0.10);
       overflow: hidden;
     }
 
     .bar div {
-      height: 100%;
       width: var(--value);
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--mint), var(--lime), var(--orange), var(--red));
       border-radius: inherit;
-      background: linear-gradient(90deg, var(--green), var(--gold), var(--red));
     }
 
     .source {
-      display: inline-block;
+      display: inline-flex;
       margin-top: 14px;
-      color: #8e1721;
+      color: #173f85;
       font-size: 13px;
-      font-weight: 900;
-    }
-
-    .notice {
-      margin-top: 16px;
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(216, 169, 50, 0.14);
-      color: #5d450b;
-      border: 1px solid rgba(216, 169, 50, 0.22);
-      font-weight: 800;
-      font-size: 14px;
+      font-weight: 950;
     }
 
     footer {
-      padding: 30px 22px 42px;
+      padding: 34px 22px 44px;
+      background: var(--black);
+      color: rgba(247, 242, 232, 0.76);
       text-align: center;
-      color: var(--cream);
-      background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 49.5%, rgba(255, 255, 255, 0.22) 50%, rgba(255, 255, 255, 0.05) 50.5%),
-        var(--grass-dark);
-      border-top: 1px solid rgba(17, 21, 17, 0.16);
     }
 
-    @media (max-width: 920px) {
+    @media (max-width: 980px) {
       .hero {
         grid-template-columns: 1fr;
-        padding-top: 42px;
       }
 
       .grid-2,
-      .grid-3 {
+      .grid-3,
+      .grid-4 {
         grid-template-columns: 1fr;
-      }
-
-      .weather-box {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .section-title {
@@ -593,43 +680,63 @@
         text-align: left;
       }
 
+      .weather-box {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .nav {
         align-items: flex-start;
         flex-direction: column;
       }
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 620px) {
       .hero-main {
+        min-height: 440px;
         padding: 30px;
+      }
+
+      .hero-main::before {
+        right: -35px;
+        top: 18px;
+        font-size: 205px;
+      }
+
+      th,
+      td {
+        padding: 12px 10px;
+        font-size: 13px;
       }
 
       .weather-box {
         grid-template-columns: 1fr;
       }
 
-      th,
-      td {
-        padding: 13px 10px;
-        font-size: 14px;
-      }
-
       .search-form {
         flex-direction: column;
+      }
+
+      .match-top {
+        flex-direction: column;
+      }
+
+      .match-time {
+        text-align: left;
       }
     }
   </style>
 </head>
+
 <body>
   <header>
     <nav class="nav">
-      <a class="logo" href="#top" aria-label="홈으로 이동">
-        <span class="logo-mark">26</span>
+      <a href="#top" class="brand" aria-label="홈으로 이동">
+        <span class="brand-mark">26</span>
         <span>사회복지실무역량</span>
       </a>
       <div class="nav-links">
-        <a href="#worldcup">월드컵 소개</a>
-        <a href="#schedule">주요 일정</a>
+        <a href="#korea">대한민국 일정</a>
+        <a href="#more">전체 일정</a>
         <a href="#weather">부산 날씨</a>
         <a href="#busan">부산 이슈</a>
         <a href="#pknu">부경대 뉴스</a>
@@ -639,123 +746,148 @@
   </header>
 
   <div id="top" class="hero">
-    <section class="hero-main" aria-labelledby="heroTitle">
+    <section class="hero-main">
       <div class="hero-content">
-        <div class="eyebrow">World Cup 2026 · Local Welfare Dashboard</div>
-        <h1 id="heroTitle">사회복지실무역량</h1>
+        <div class="eyebrow">FIFA WORLD CUP 26</div>
+        <h1>대한민국<br />월드컵 일정</h1>
         <p>
-          2026 FIFA 월드컵 정보를 중심으로, 부산 날씨·지역 이슈·부경대 뉴스·사회복지 통계를 함께 확인할 수 있는 수업용 웹페이지입니다.
-          축구 대회처럼 여러 지역과 사람들이 연결되는 장면을 사회복지 실무의 정보 수집 역량과 연결해 구성했습니다.
+          2026 FIFA 월드컵 대한민국 조별리그 일정과 부산 생활 정보, 부경대 뉴스, 사회복지 관련 통계를 확인할 수 있는 정보 페이지입니다.
         </p>
         <div class="button-row">
-          <a class="btn" href="#worldcup">월드컵 정보 보기</a>
-          <a class="btn secondary" href="#welfare">복지 통계 보기</a>
+          <a class="btn" href="#korea">대한민국 경기 보기</a>
+          <a class="btn secondary" href="#more">다른 일정 보기</a>
         </div>
       </div>
     </section>
 
-    <aside class="hero-side" aria-label="대회 요약">
-      <article class="ticket">
-        <small>Host Countries</small>
-        <strong>3개국</strong>
-        <span>캐나다 · 멕시코 · 미국 공동 개최</span>
+    <aside id="korea" class="korea-panel">
+      <article class="panel-title">
+        <small>GROUP A · KOREA REPUBLIC</small>
+        <strong>대한민국 조별리그</strong>
       </article>
-      <article class="ticket">
-        <small>Teams</small>
-        <strong>48팀</strong>
-        <span>월드컵 최초 48개국 본선 체제</span>
+
+      <article class="match-card">
+        <div class="match-top">
+          <span class="match-no">M2</span>
+          <div class="match-time">2026.06.12 금<br />오전 11:00 KST</div>
+        </div>
+        <h3>대한민국 vs 체코</h3>
+        <p>Guadalajara Stadium · 과달라하라</p>
       </article>
-      <article class="ticket">
-        <small>Matches</small>
-        <strong>104경기</strong>
-        <span>북중미 16개 개최 도시에서 진행</span>
+
+      <article class="match-card">
+        <div class="match-top">
+          <span class="match-no">M28</span>
+          <div class="match-time">2026.06.19 금<br />오전 10:00 KST</div>
+        </div>
+        <h3>멕시코 vs 대한민국</h3>
+        <p>Guadalajara Stadium · 과달라하라</p>
+      </article>
+
+      <article class="match-card">
+        <div class="match-top">
+          <span class="match-no">M54</span>
+          <div class="match-time">2026.06.25 목<br />오전 10:00 KST</div>
+        </div>
+        <h3>남아공 vs 대한민국</h3>
+        <p>Monterrey Stadium · 몬테레이</p>
       </article>
     </aside>
   </div>
 
   <main>
-    <section id="worldcup">
+    <section id="summary">
       <div class="section-title">
-        <h2>2026 월드컵 소개</h2>
-        <p>월드컵 정보를 단순 스포츠 뉴스가 아니라, 도시·관광·이동·복지 접근성까지 연결되는 대형 국제행사 정보로 정리했습니다.</p>
+        <h2>WORLD CUP 2026</h2>
+        <p>대회 핵심 정보</p>
       </div>
 
-      <div class="grid grid-3">
-        <article class="card feature-card">
-          <h3>대회 개요</h3>
-          <p>
-            2026 FIFA 월드컵은 캐나다, 멕시코, 미국이 함께 개최하는 대회입니다.
-            본선 규모가 48개 팀으로 확대되며, 더 많은 국가와 도시가 대회에 참여합니다.
-          </p>
-          <div class="tag-row">
-            <span class="tag red">Canada</span>
-            <span class="tag">Mexico</span>
-            <span class="tag blue">USA</span>
-          </div>
+      <div class="grid grid-4">
+        <article class="card summary-card">
+          <h3>개최국</h3>
+          <div class="summary-number">3</div>
+          <p>캐나다 · 멕시코 · 미국</p>
         </article>
 
-        <article class="card feature-card">
-          <h3>운영 포인트</h3>
-          <p>
-            16개 개최 도시, 장거리 이동, 대규모 관중, 경기장 접근성 등은 월드컵 운영에서 중요한 요소입니다.
-            이는 교통, 안전, 관광, 장애인 접근성 문제와도 이어집니다.
-          </p>
-          <div class="tag-row">
-            <span class="tag">도시 운영</span>
-            <span class="tag gold">접근성</span>
-            <span class="tag">안전</span>
-          </div>
+        <article class="card summary-card">
+          <h3>참가팀</h3>
+          <div class="summary-number">48</div>
+          <p>48개국 본선 체제</p>
         </article>
 
-        <article class="card feature-card">
-          <h3>사회복지와 연결</h3>
-          <p>
-            대형 스포츠 이벤트는 누구나 안전하고 편리하게 참여할 수 있어야 합니다.
-            그래서 이동권, 정보 접근성, 지역사회 서비스, 취약계층 배려가 함께 논의될 수 있습니다.
-          </p>
-          <div class="tag-row">
-            <span class="tag">이동권</span>
-            <span class="tag">정보 접근성</span>
-            <span class="tag">지역사회</span>
-          </div>
+        <article class="card summary-card">
+          <h3>조 편성</h3>
+          <div class="summary-number">12</div>
+          <p>12개 조 · 조별리그</p>
+        </article>
+
+        <article class="card summary-card">
+          <h3>전체 경기</h3>
+          <div class="summary-number">104</div>
+          <p>개막전부터 결승까지</p>
         </article>
       </div>
     </section>
 
-    <section id="schedule">
+    <section id="more">
       <div class="section-title">
-        <h2>2026 월드컵 주요 일정</h2>
-        <p>공식 일정 페이지 확인을 쉽게 하기 위한 요약 표입니다. 세부 경기 일정은 대회 운영 상황에 따라 공식 페이지에서 다시 확인하는 방식이 가장 안전합니다.</p>
+        <h2>다른 일정 보기</h2>
+        <p>버튼을 누르면 해당 정보가 아래에 표시됩니다.</p>
       </div>
 
-      <article class="card schedule">
-        <table>
-          <thead>
-            <tr>
-              <th>날짜</th>
-              <th>구분</th>
-              <th>내용</th>
-              <th>비고</th>
-            </tr>
-          </thead>
-          <tbody id="worldcupScheduleBody"></tbody>
-        </table>
+      <article class="card">
+        <h3>일정 메뉴</h3>
+        <p>대한민국 경기 외의 정보는 필요한 경우에만 펼쳐서 볼 수 있습니다.</p>
+        <div class="button-row">
+          <button type="button" class="schedule-btn" onclick="showPanel('groupsPanel', this)">조 편성</button>
+          <button type="button" class="schedule-btn" onclick="showPanel('phasePanel', this)">토너먼트 일정</button>
+          <button type="button" class="schedule-btn" onclick="showPanel('featuredPanel', this)">주요 경기</button>
+          <a class="btn secondary" href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures" target="_blank" rel="noopener">FIFA 공식 일정</a>
+        </div>
       </article>
 
-      <div class="button-row">
-        <a class="btn" href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures" target="_blank" rel="noopener">FIFA 공식 경기 일정</a>
-        <a class="btn secondary" href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026" target="_blank" rel="noopener">FIFA 월드컵 2026 공식 페이지</a>
+      <div id="groupsPanel" class="hidden-panel">
+        <div id="groupGrid" class="grid grid-4"></div>
       </div>
 
-      <div class="notice">
-        과제 제출 전에는 공식 일정 페이지에서 대한민국 경기와 주요 경기 일정을 한 번 더 확인한 뒤 표 내용을 수정하면 좋습니다.
+      <div id="phasePanel" class="hidden-panel">
+        <article class="card table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>대회 단계</th>
+                <th>기간</th>
+                <th>내용</th>
+                <th>비고</th>
+              </tr>
+            </thead>
+            <tbody id="phaseScheduleBody"></tbody>
+          </table>
+        </article>
+      </div>
+
+      <div id="featuredPanel" class="hidden-panel">
+        <article class="card table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>번호</th>
+                <th>날짜</th>
+                <th>경기</th>
+                <th>장소</th>
+                <th>구분</th>
+              </tr>
+            </thead>
+            <tbody id="featuredScheduleBody"></tbody>
+          </table>
+        </article>
       </div>
     </section>
 
     <section id="weather">
       <div class="section-title">
         <h2>부산 현재 날씨</h2>
-        <p>부산 좌표 기준으로 Open-Meteo API에서 현재 기온, 습도, 강수량, 풍속을 불러옵니다.</p>
+        <p>현재 기온, 습도, 강수량, 풍속</p>
       </div>
 
       <article class="card">
@@ -788,16 +920,13 @@
     <section id="busan">
       <div class="section-title">
         <h2>부산의 이슈</h2>
-        <p>지역 이슈를 검색하고 공식 시정 소식으로 이동할 수 있도록 구성했습니다.</p>
+        <p>뉴스 검색 및 공식 소식 링크</p>
       </div>
 
       <div class="grid grid-2">
         <article class="card">
           <h3>부산 이슈 검색</h3>
-          <p>
-            부산의 교통, 청년정책, 고령화, 주거, 관광 이슈는 지역사회복지 실무에서도 중요한 자료가 됩니다.
-            키워드를 입력하면 네이버 뉴스 검색 결과로 이동합니다.
-          </p>
+          <p>키워드를 입력하면 네이버 뉴스 검색 결과로 이동합니다.</p>
           <form class="search-form" onsubmit="searchNews(event, 'busan')">
             <input id="busanKeyword" type="text" value="부산 고령화 지역사회복지" aria-label="부산 이슈 검색어" />
             <button type="submit">검색</button>
@@ -809,7 +938,7 @@
         </article>
 
         <article class="card">
-          <h3>지역 이슈 요약 카드</h3>
+          <h3>지역 이슈 요약</h3>
           <div class="news-list" id="busanIssues"></div>
         </article>
       </div>
@@ -818,15 +947,13 @@
     <section id="pknu">
       <div class="section-title">
         <h2>부경대 뉴스</h2>
-        <p>학사 공지, 학교 소식, 캠퍼스 이슈를 빠르게 확인할 수 있도록 검색과 공식 링크를 넣었습니다.</p>
+        <p>학교 소식 검색 및 공식 링크</p>
       </div>
 
       <div class="grid grid-2">
         <article class="card">
           <h3>부경대 뉴스 검색</h3>
-          <p>
-            부경대 관련 소식은 학생 생활, 비교과 프로그램, 장학, 취업, 지역 연계 활동과 연결됩니다.
-          </p>
+          <p>키워드를 입력하면 네이버 뉴스 검색 결과로 이동합니다.</p>
           <form class="search-form" onsubmit="searchNews(event, 'pknu')">
             <input id="pknuKeyword" type="text" value="부경대학교 사회복지 지역사회" aria-label="부경대 뉴스 검색어" />
             <button type="submit">검색</button>
@@ -839,7 +966,7 @@
         </article>
 
         <article class="card">
-          <h3>학교 소식 요약 카드</h3>
+          <h3>학교 소식 요약</h3>
           <div class="news-list" id="pknuNews"></div>
         </article>
       </div>
@@ -848,7 +975,7 @@
     <section id="welfare">
       <div class="section-title">
         <h2>사회복지 관련 통계</h2>
-        <p>고령화, 장애인 복지, 기초생활보장 자료를 중심으로 사회복지 실무에서 참고할 만한 기본 통계를 카드로 정리했습니다.</p>
+        <p>기본 통계 카드</p>
       </div>
 
       <div class="grid grid-3" id="welfareStats"></div>
@@ -863,96 +990,84 @@
   </footer>
 
   <script>
-    // ===== 1. 2026 월드컵 주요 일정 =====
-    const worldcupSchedules = [
-      {
-        date: "2026-06-11",
-        type: "개막전",
-        content: "멕시코시티에서 2026 월드컵 개막",
-        note: "공식 일정 확인"
-      },
-      {
-        date: "2026-06-11 ~ 2026-06-27",
-        type: "조별리그",
-        content: "48개 팀이 12개 조로 나뉘어 조별리그 진행",
-        note: "세부 일정 확인 필요"
-      },
-      {
-        date: "2026-06-28 ~ 2026-07-03",
-        type: "32강",
-        content: "토너먼트 라운드 시작",
-        note: "녹아웃 스테이지"
-      },
-      {
-        date: "2026-07-04 ~ 2026-07-07",
-        type: "16강",
-        content: "8강 진출팀 결정",
-        note: "공식 일정 확인"
-      },
-      {
-        date: "2026-07-09 ~ 2026-07-11",
-        type: "8강",
-        content: "준결승 진출팀 결정",
-        note: "공식 일정 확인"
-      },
-      {
-        date: "2026-07-14 ~ 2026-07-15",
-        type: "준결승",
-        content: "결승 진출팀 결정",
-        note: "댈러스·애틀랜타 예정"
-      },
-      {
-        date: "2026-07-19",
-        type: "결승",
-        content: "뉴욕 뉴저지 스타디움에서 결승전",
-        note: "대회 최종전"
-      }
+    const groups = [
+      { group: "A", teams: ["멕시코", "남아프리카공화국", "대한민국", "체코"] },
+      { group: "B", teams: ["캐나다", "보스니아 헤르체고비나", "카타르", "스위스"] },
+      { group: "C", teams: ["브라질", "모로코", "아이티", "스코틀랜드"] },
+      { group: "D", teams: ["미국", "파라과이", "호주", "튀르키예"] },
+      { group: "E", teams: ["독일", "퀴라소", "코트디부아르", "에콰도르"] },
+      { group: "F", teams: ["네덜란드", "일본", "스웨덴", "튀니지"] },
+      { group: "G", teams: ["벨기에", "이집트", "이란", "뉴질랜드"] },
+      { group: "H", teams: ["스페인", "카보베르데", "사우디아라비아", "우루과이"] },
+      { group: "I", teams: ["프랑스", "세네갈", "이라크", "노르웨이"] },
+      { group: "J", teams: ["아르헨티나", "알제리", "오스트리아", "요르단"] },
+      { group: "K", teams: ["포르투갈", "콜롬비아", "우즈베키스탄", "DR콩고"] },
+      { group: "L", teams: ["잉글랜드", "크로아티아", "가나", "파나마"] }
     ];
 
-    // ===== 2. 부산 이슈 요약 카드 =====
+    const phases = [
+      { phase: "조별리그", date: "6월 11일 ~ 6월 27일", desc: "12개 조, 각 팀 3경기", note: "총 72경기" },
+      { phase: "32강", date: "6월 28일 ~ 7월 3일", desc: "토너먼트 시작", note: "16경기" },
+      { phase: "16강", date: "7월 4일 ~ 7월 7일", desc: "8강 진출팀 결정", note: "8경기" },
+      { phase: "8강", date: "7월 9일 ~ 7월 11일", desc: "준결승 진출팀 결정", note: "4경기" },
+      { phase: "준결승", date: "7월 14일 ~ 7월 15일", desc: "결승 진출팀 결정", note: "2경기" },
+      { phase: "3·4위전", date: "7월 18일", desc: "준결승 패자 간 경기", note: "마이애미" },
+      { phase: "결승", date: "7월 19일", desc: "우승팀 결정", note: "뉴욕/뉴저지" }
+    ];
+
+    const featuredMatches = [
+      { no: "M1", date: "6월 12일 04:00 KST", match: "멕시코 vs 남아프리카공화국", venue: "멕시코시티 스타디움", type: "개막전" },
+      { no: "M3", date: "6월 13일 04:00 KST", match: "캐나다 vs 보스니아 헤르체고비나", venue: "토론토 스타디움", type: "개최국" },
+      { no: "M4", date: "6월 13일 10:00 KST", match: "미국 vs 파라과이", venue: "로스앤젤레스 스타디움", type: "개최국" },
+      { no: "M7", date: "6월 14일 07:00 KST", match: "브라질 vs 모로코", venue: "뉴욕/뉴저지 스타디움", type: "주요 경기" },
+      { no: "M22", date: "6월 18일 05:00 KST", match: "잉글랜드 vs 크로아티아", venue: "뉴욕/뉴저지 스타디움", type: "주요 경기" },
+      { no: "M101", date: "7월 15일 04:00 KST", match: "준결승 1", venue: "댈러스 스타디움", type: "준결승" },
+      { no: "M102", date: "7월 16일 04:00 KST", match: "준결승 2", venue: "애틀랜타 스타디움", type: "준결승" },
+      { no: "M103", date: "7월 19일 06:00 KST", match: "3·4위전", venue: "마이애미 스타디움", type: "순위 결정전" },
+      { no: "M104", date: "7월 20일 04:00 KST", match: "결승", venue: "뉴욕/뉴저지 스타디움", type: "결승" }
+    ];
+
     const busanIssues = [
       {
         category: "고령화",
         title: "초고령사회와 지역 돌봄",
-        desc: "부산은 고령인구 비중이 높은 지역으로, 노인 돌봄·이동권·건강지원 정책의 중요성이 큽니다."
+        desc: "노인 돌봄, 건강지원, 이동 편의 관련 이슈를 확인할 수 있습니다."
       },
       {
         category: "청년",
         title: "청년 유출과 지역 활력",
-        desc: "대학, 취업, 주거, 문화 인프라는 청년 정착과 지역사회 유지에 직접적인 영향을 줍니다."
+        desc: "대학, 취업, 주거, 문화 인프라 관련 이슈를 확인할 수 있습니다."
       },
       {
         category: "생활환경",
         title: "교통·주거·접근성 문제",
-        desc: "복지 실무에서는 지역 주민이 실제로 서비스를 이용할 수 있는 거리와 이동 조건을 함께 살펴야 합니다."
+        desc: "주민 생활과 서비스 이용 조건을 살펴볼 수 있습니다."
       }
     ];
 
-    // ===== 3. 부경대 뉴스 요약 카드 =====
     const pknuNews = [
       {
         category: "학사 정보",
         title: "공지사항 확인",
-        desc: "학사 일정, 장학, 비교과 프로그램, 현장실습 정보는 공식 공지사항을 통해 확인하는 것이 가장 정확합니다."
+        desc: "학사 일정, 장학, 비교과 프로그램, 현장실습 정보를 확인할 수 있습니다."
       },
       {
         category: "지역 연계",
         title: "대학과 지역사회",
-        desc: "부경대의 연구·봉사·산학협력 소식은 부산 지역사회 문제와 연결해 해석할 수 있습니다."
+        desc: "연구, 봉사, 산학협력 관련 소식을 확인할 수 있습니다."
       },
       {
         category: "학생 생활",
         title: "캠퍼스 이슈",
-        desc: "학생 복지, 접근성, 학습 지원, 상담 서비스 등은 사회복지실무역량과 직접 연결되는 주제입니다."
+        desc: "학생 복지, 상담, 학습 지원 관련 소식을 확인할 수 있습니다."
       }
     ];
 
-    // ===== 4. 사회복지 관련 통계 카드 =====
     const welfareStats = [
       {
         label: "부산 65세 이상 고령인구 비중",
         value: "24.5%",
-        desc: "2025년 고령자 통계 기준. 부산은 65세 이상 고령인구 비중이 높은 지역으로 분류됩니다.",
+        desc: "2025년 고령자 통계 기준",
         bar: 82,
         source: "통계청 2025 고령자 통계",
         url: "https://www.kostat.go.kr/board.es?act=view&bid=10820&list_no=438832&mid=a10301010000"
@@ -960,7 +1075,7 @@
       {
         label: "전국 등록장애인 비중",
         value: "5.1%",
-        desc: "2025년 말 기준 등록장애인은 2,627,761명이며, 주민등록인구 대비 5.1%로 발표되었습니다.",
+        desc: "2025년 말 기준 등록장애인 현황",
         bar: 51,
         source: "보건복지부 등록장애인 현황",
         url: "https://www.mohw.go.kr/board.es?act=view&bid=0027&list_no=1490145&mid=a10503010100"
@@ -968,21 +1083,69 @@
       {
         label: "기초생활보장 수급자 데이터",
         value: "2018~2024",
-        desc: "보건복지부는 시도별 기초생활보장 수급자 수 데이터를 공공데이터포털에서 제공합니다.",
+        desc: "시도별 기초생활보장 수급자 수 데이터",
         bar: 70,
         source: "공공데이터포털",
         url: "https://www.data.go.kr/data/15001654/fileData.do"
       }
     ];
 
-    function renderWorldcupSchedule() {
-      const tbody = document.getElementById("worldcupScheduleBody");
-      tbody.innerHTML = worldcupSchedules.map(item => `
+    function showPanel(panelId, button) {
+      const panels = document.querySelectorAll(".hidden-panel");
+      const buttons = document.querySelectorAll(".schedule-btn");
+
+      panels.forEach(panel => {
+        if (panel.id === panelId) {
+          panel.classList.toggle("active");
+        } else {
+          panel.classList.remove("active");
+        }
+      });
+
+      buttons.forEach(btn => btn.classList.remove("active"));
+
+      const selectedPanel = document.getElementById(panelId);
+      if (selectedPanel.classList.contains("active")) {
+        button.classList.add("active");
+      }
+    }
+
+    function renderGroups() {
+      const box = document.getElementById("groupGrid");
+      box.innerHTML = groups.map(item => `
+        <article class="card group-card">
+          <div class="group-title">
+            <span>${item.group}</span>
+            <strong>GROUP ${item.group}</strong>
+          </div>
+          <div class="teams">
+            ${item.teams.map(team => `<div>${team}</div>`).join("")}
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function renderPhaseSchedule() {
+      const body = document.getElementById("phaseScheduleBody");
+      body.innerHTML = phases.map(item => `
         <tr>
+          <td><strong>${item.phase}</strong></td>
           <td>${item.date}</td>
+          <td>${item.desc}</td>
+          <td><span class="status ${item.phase === "결승" ? "final" : ""}">${item.note}</span></td>
+        </tr>
+      `).join("");
+    }
+
+    function renderFeaturedMatches() {
+      const body = document.getElementById("featuredScheduleBody");
+      body.innerHTML = featuredMatches.map(item => `
+        <tr>
+          <td><span class="status ${item.type === "결승" ? "final" : ""}">${item.no}</span></td>
+          <td>${item.date}</td>
+          <td><strong>${item.match}</strong></td>
+          <td>${item.venue}</td>
           <td>${item.type}</td>
-          <td>${item.content}</td>
-          <td><span class="status ${item.type === "결승" || item.type === "개막전" ? "hot" : ""}">${item.note}</span></td>
         </tr>
       `).join("");
     }
@@ -1001,7 +1164,7 @@
     function renderWelfareStats() {
       const box = document.getElementById("welfareStats");
       box.innerHTML = welfareStats.map(item => `
-        <article class="card stat-card">
+        <article class="card">
           <h3>${item.label}</h3>
           <div class="stat-number">${item.value}</div>
           <p>${item.desc}</p>
@@ -1015,11 +1178,13 @@
 
     function searchNews(event, type) {
       event.preventDefault();
+
       const input = type === "busan"
         ? document.getElementById("busanKeyword")
         : document.getElementById("pknuKeyword");
 
       const keyword = input.value.trim();
+
       if (!keyword) {
         alert("검색어를 입력해 주세요.");
         return;
@@ -1051,19 +1216,24 @@
         82: "강한 소나기",
         95: "뇌우"
       };
+
       return map[code] || "날씨 정보";
     }
 
     async function loadWeather() {
       const title = document.getElementById("weatherTitle");
       const desc = document.getElementById("weatherDesc");
+
       title.textContent = "날씨 정보를 불러오는 중...";
       desc.textContent = "부산 현재 날씨 데이터를 확인하고 있습니다.";
 
       try {
         const url = "https://api.open-meteo.com/v1/forecast?latitude=35.1796&longitude=129.0756&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m,weather_code&timezone=Asia%2FSeoul";
         const response = await fetch(url);
-        if (!response.ok) throw new Error("날씨 API 응답 오류");
+
+        if (!response.ok) {
+          throw new Error("날씨 API 응답 오류");
+        }
 
         const data = await response.json();
         const current = data.current;
@@ -1086,7 +1256,9 @@
       }
     }
 
-    renderWorldcupSchedule();
+    renderGroups();
+    renderPhaseSchedule();
+    renderFeaturedMatches();
     renderNewsCards("busanIssues", busanIssues);
     renderNewsCards("pknuNews", pknuNews);
     renderWelfareStats();
